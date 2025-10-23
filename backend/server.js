@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/database.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -30,8 +31,10 @@ app.get('/', (req, res) => {
   });
 });
 
+// API Routes
+app.use('/api/upload', uploadRoutes);
+
 // Routes will be added here
-// app.use('/api/upload', uploadRoutes);
 // app.use('/api/reports', reportRoutes);
 
 // Error handling middleware
