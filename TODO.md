@@ -367,9 +367,9 @@ Track your progress and stay organized!
 | 1. Setup            | ✅ Done    | Oct 23     | Oct 23   | Initial structure created |
 | 2. XML Upload       | ✅ Done    | Oct 23     | Oct 23   | Upload endpoint working   |
 | 3. XML Parsing      | ✅ Done       | Oct 23     | Oct 23   | Parser extracts all data  |
-| 4. Database         | 🔄 In Progress| Oct 23     | \_\_\_   | Creating Mongoose schema  |
-| 5. API              | ⏳ Waiting    | \_\_\_     | \_\_\_   |                           |
-| 6. Frontend Upload  | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
+| 4. Database         | ✅ Done       | Oct 23     | Oct 23   | Mongoose schema created   |
+| 5. API              | ✅ Done       | Oct 23     | Oct 23   | All REST endpoints work   |
+| 6. Frontend Upload  | 🔄 Next       | \_\_\_     | \_\_\_   |                           |
 | 7. Frontend Display | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
 | 8. Styling          | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
 | 9. Testing          | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
