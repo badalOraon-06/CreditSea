@@ -3,6 +3,8 @@
  * Handles XML file upload and validation
  */
 
+import { parseXMLFile } from '../utils/xmlParser.js';
+
 // Handle XML file upload
 export const uploadXML = async (req, res) => {
   try {
@@ -23,16 +25,26 @@ export const uploadXML = async (req, res) => {
     console.log('   - Size:', (file.size / 1024).toFixed(2), 'KB');
     console.log('   - Path:', file.path);
 
-    // Return success response
+    // Parse the XML file
+    console.log('🔍 Parsing XML file...');
+    const parsedData = await parseXMLFile(file.path);
+    console.log('✅ XML parsed successfully');
+    console.log('   - Name:', parsedData.basicDetails.fullName);
+    console.log('   - Credit Score:', parsedData.creditScore.score);
+    console.log('   - Total Accounts:', parsedData.reportSummary.totalAccounts);
+
+    // Return success response with parsed data
     res.status(200).json({
       success: true,
-      message: 'XML file uploaded successfully!',
+      message: 'XML file uploaded and parsed successfully!',
       data: {
-        filename: file.filename,
-        originalname: file.originalname,
-        size: file.size,
-        path: file.path,
-        uploadedAt: new Date()
+        file: {
+          filename: file.filename,
+          originalname: file.originalname,
+          size: file.size,
+          uploadedAt: new Date()
+        },
+        creditReport: parsedData
       }
     });
 
@@ -40,7 +52,7 @@ export const uploadXML = async (req, res) => {
     console.error('❌ Upload error:', error.message);
     res.status(500).json({
       success: false,
-      message: 'Error uploading file',
+      message: 'Error uploading or parsing file',
       error: error.message
     });
   }
