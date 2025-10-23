@@ -3,7 +3,9 @@
 ## 🎯 Your Learning Path
 
 ### Day 1: Understanding the Project ✅ DONE!
+
 **What we did:**
+
 - Created complete project structure
 - Set up backend with Express.js
 - Set up frontend with React + Vite
@@ -11,7 +13,9 @@
 - Created basic routing
 
 **Key Concepts Learned:**
+
 1. **MERN Stack Architecture**
+
    - MongoDB: Database layer
    - Express: Backend framework
    - React: Frontend framework
@@ -29,15 +33,19 @@
 ### Phase 2: XML Upload Endpoint
 
 **Your Tasks:**
+
 1. **Learn about Multer** (File upload middleware)
+
    - Read: https://www.npmjs.com/package/multer
    - Understand: diskStorage, fileFilter, limits
 
 2. **Create Upload Route**
+
    - File: `backend/routes/uploadRoutes.js`
    - Endpoint: POST `/api/upload`
 
 3. **Create Upload Controller**
+
    - File: `backend/controllers/uploadController.js`
    - Functions: handleFileUpload, validateXML
 
@@ -50,22 +58,22 @@
 
 ```javascript
 // Multer configuration example
-import multer from 'multer';
+import multer from "multer";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    cb(null, "uploads/");
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
+    cb(null, Date.now() + "-" + file.originalname);
+  },
 });
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'text/xml' || file.originalname.endsWith('.xml')) {
+  if (file.mimetype === "text/xml" || file.originalname.endsWith(".xml")) {
     cb(null, true);
   } else {
-    cb(new Error('Only XML files are allowed!'), false);
+    cb(new Error("Only XML files are allowed!"), false);
   }
 };
 ```
@@ -75,21 +83,25 @@ const fileFilter = (req, file, cb) => {
 ## 📖 Important Concepts
 
 ### 1. REST API Design
+
 - GET: Retrieve data
 - POST: Create/Upload data
 - PUT: Update data
 - DELETE: Remove data
 
 ### 2. Middleware in Express
+
 - Functions that execute before route handlers
 - Example: multer, cors, express.json()
 
 ### 3. Error Handling
+
 - Try-catch blocks
 - Express error middleware
 - HTTP status codes (200, 400, 404, 500)
 
 ### 4. MongoDB Schema Design
+
 - Think about your data structure
 - Relationships between data
 - Indexing for performance
@@ -99,16 +111,19 @@ const fileFilter = (req, file, cb) => {
 ## 💡 Tips for Success
 
 1. **Test Frequently**
+
    - Test after every small change
    - Use console.log() to debug
    - Check MongoDB Compass to view data
 
 2. **Read Documentation**
+
    - Express.js docs
    - React docs
    - MongoDB docs
 
 3. **Ask Questions**
+
    - What does this code do?
    - Why do we need this?
    - How can I improve this?
@@ -123,19 +138,24 @@ const fileFilter = (req, file, cb) => {
 ## 🐛 Common Issues & Solutions
 
 ### Issue 1: MongoDB Connection Failed
+
 **Solution:** Make sure MongoDB is running
+
 ```bash
 net start MongoDB
 ```
 
 ### Issue 2: Port Already in Use
+
 **Solution:** Change port in .env or kill the process
+
 ```bash
 netstat -ano | findstr :5000
 taskkill /PID <PID> /F
 ```
 
 ### Issue 3: CORS Error
+
 **Solution:** Already handled with cors middleware in server.js
 
 ---
@@ -143,11 +163,13 @@ taskkill /PID <PID> /F
 ## 📚 Resources
 
 ### Must-Read:
+
 - [Express.js Guide](https://expressjs.com/en/guide/routing.html)
 - [React Tutorial](https://react.dev/learn)
 - [MongoDB Tutorial](https://www.mongodb.com/docs/manual/tutorial/)
 
 ### Video Resources:
+
 - Search: "MERN Stack Tutorial 2024"
 - Search: "XML parsing in Node.js"
 - Search: "File upload with Multer"
@@ -157,18 +179,21 @@ taskkill /PID <PID> /F
 ## ✅ Daily Checklist
 
 ### Before Starting Each Day:
+
 - [ ] Pull latest code if working with team
 - [ ] Start MongoDB service
 - [ ] Open 2 terminals (backend & frontend)
 - [ ] Review previous day's work
 
 ### During Development:
+
 - [ ] Test frequently
 - [ ] Commit code regularly
 - [ ] Write clear commit messages
 - [ ] Document complex logic
 
 ### End of Day:
+
 - [ ] Test all features
 - [ ] Commit and push code
 - [ ] Update this guide with learnings
@@ -179,10 +204,12 @@ taskkill /PID <PID> /F
 ## 🎓 Key Takeaways So Far
 
 1. **Project Structure Matters**
+
    - Good organization makes development easier
    - Separate concerns (frontend, backend, database)
 
 2. **Environment Variables**
+
    - Never hardcode sensitive data
    - Use .env files
    - Don't commit .env to Git

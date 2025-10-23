@@ -3,6 +3,7 @@
 ## Using Postman
 
 ### Test 1: Check Upload Info (GET)
+
 1. Open Postman
 2. Create new request
 3. Method: GET
@@ -11,6 +12,7 @@
 6. You should see upload endpoint information
 
 Expected Response:
+
 ```json
 {
   "success": true,
@@ -24,6 +26,7 @@ Expected Response:
 ---
 
 ### Test 2: Upload XML File (POST)
+
 1. Open Postman
 2. Create new request
 3. Method: POST
@@ -36,6 +39,7 @@ Expected Response:
 10. Click Send
 
 Expected Response (Success):
+
 ```json
 {
   "success": true,
@@ -53,8 +57,10 @@ Expected Response (Success):
 ---
 
 ### Test 3: Upload Non-XML File (Should Fail)
+
 1. Same as Test 2, but select a .txt or .pdf file
 2. Expected Response:
+
 ```json
 {
   "success": false,
@@ -65,9 +71,11 @@ Expected Response (Success):
 ---
 
 ### Test 4: Upload Without File (Should Fail)
+
 1. POST request to `http://localhost:5000/api/upload`
 2. Don't attach any file
 3. Expected Response:
+
 ```json
 {
   "success": false,
@@ -119,18 +127,22 @@ When you upload a file, you should see in your backend terminal:
 ## Troubleshooting
 
 ### Error: "Cannot POST /api/upload"
+
 - Backend server not running
 - Solution: Start backend with `npm run dev`
 
 ### Error: "MulterError: Unexpected field"
+
 - Wrong field name in Postman
 - Solution: Use exactly `xmlFile` as the field name
 
 ### Error: "File too large"
+
 - File exceeds 10MB
 - Solution: Use a smaller XML file
 
 ### Error: "Only XML files are allowed"
+
 - Wrong file type
 - Solution: Select an .xml file
 

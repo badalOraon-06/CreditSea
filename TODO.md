@@ -85,14 +85,14 @@ Track your progress and stay organized!
 
 ---
 
-## 💾 Phase 4: Database Schema Design (Days 5-6)
+## 💾 Phase 4: Database Schema Design (IN PROGRESS - Days 5-6)
 
 ### Backend Tasks:
 
-- [ ] Design MongoDB schema
-  - [ ] Plan data structure
-  - [ ] Identify required fields
-  - [ ] Decide on embedded vs referenced data
+- [x] Design MongoDB schema
+  - [x] Plan data structure
+  - [x] Identify required fields
+  - [x] Decide on embedded vs referenced data
 - [ ] Create Mongoose model (`backend/models/CreditReport.js`)
   - [ ] Define schema for basic details
   - [ ] Define schema for report summary
@@ -362,18 +362,18 @@ Track your progress and stay organized!
 
 ## 📈 Progress Tracker
 
-| Phase               | Status        | Start Date | End Date | Notes                     |
-| ------------------- | ------------- | ---------- | -------- | ------------------------- |
-| 1. Setup            | ✅ Done       | Oct 23     | Oct 23   | Initial structure created |
-| 2. XML Upload       | ✅ Done       | Oct 23     | Oct 23   | Upload endpoint working   |
+| Phase               | Status     | Start Date | End Date | Notes                     |
+| ------------------- | ---------- | ---------- | -------- | ------------------------- |
+| 1. Setup            | ✅ Done    | Oct 23     | Oct 23   | Initial structure created |
+| 2. XML Upload       | ✅ Done    | Oct 23     | Oct 23   | Upload endpoint working   |
 | 3. XML Parsing      | ✅ Done       | Oct 23     | Oct 23   | Parser extracts all data  |
-| 4. Database         | 🔄 Next       | \_\_\_     | \_\_\_   |                           |
-| 5. API              | ⏳ Waiting     | \_\_\_     | \_\_\_   |                           |
-| 6. Frontend Upload  | ⏳ Waiting     | \_\_\_     | \_\_\_   |                           |
-| 7. Frontend Display | ⏳ Waiting     | \_\_\_     | \_\_\_   |                           |
-| 8. Styling          | ⏳ Waiting     | \_\_\_     | \_\_\_   |                           |
-| 9. Testing          | ⏳ Waiting     | \_\_\_     | \_\_\_   |                           |
-| 10. Documentation   | ⏳ Waiting     | \_\_\_     | \_\_\_   |                           |
+| 4. Database         | 🔄 In Progress| Oct 23     | \_\_\_   | Creating Mongoose schema  |
+| 5. API              | ⏳ Waiting    | \_\_\_     | \_\_\_   |                           |
+| 6. Frontend Upload  | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
+| 7. Frontend Display | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
+| 8. Styling          | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
+| 9. Testing          | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
+| 10. Documentation   | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
 
 ---
 

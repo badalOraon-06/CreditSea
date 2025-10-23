@@ -7,6 +7,7 @@ Congratulations! You now have a complete MERN stack project structure ready for 
 ### 📦 What's Installed:
 
 #### Backend (Node.js + Express):
+
 - ✅ Express server with basic configuration
 - ✅ MongoDB connection setup
 - ✅ CORS enabled for frontend communication
@@ -15,6 +16,7 @@ Congratulations! You now have a complete MERN stack project structure ready for 
 - ✅ Error handling middleware
 
 #### Frontend (React + Vite):
+
 - ✅ React application with Vite build tool
 - ✅ React Router for navigation
 - ✅ Axios for API calls
@@ -23,10 +25,12 @@ Congratulations! You now have a complete MERN stack project structure ready for 
 - ✅ Proxy setup for backend communication
 
 #### Database:
+
 - ✅ MongoDB connection string configured
 - ✅ Ready for Mongoose models
 
 #### Documentation:
+
 - ✅ README.md - Project overview
 - ✅ QUICK_START.md - Setup instructions
 - ✅ LEARNING_GUIDE.md - Learning resources
@@ -34,6 +38,7 @@ Congratulations! You now have a complete MERN stack project structure ready for 
 - ✅ Sample XML files for testing
 
 #### Git:
+
 - ✅ Repository initialized
 - ✅ .gitignore configured
 - ✅ First commits made
@@ -47,12 +52,14 @@ Congratulations! You now have a complete MERN stack project structure ready for 
 Open **TWO** terminal windows:
 
 **Terminal 1 - Backend:**
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\backend"
 npm install
 ```
 
 **Terminal 2 - Frontend:**
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\frontend"
 npm install
@@ -65,11 +72,13 @@ Wait for both to complete (2-3 minutes).
 ### Step 2: Start MongoDB
 
 Check if MongoDB is installed:
+
 ```powershell
 mongod --version
 ```
 
 Start MongoDB:
+
 ```powershell
 net start MongoDB
 ```
@@ -81,12 +90,14 @@ Or download MongoDB from: https://www.mongodb.com/try/download/community
 ### Step 3: Run the Application
 
 **Terminal 1 - Backend:**
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\backend"
 npm run dev
 ```
 
 Expected output:
+
 ```
 🚀 Server is running on port 5000
 ✅ MongoDB Connected: localhost
@@ -94,12 +105,14 @@ Expected output:
 ```
 
 **Terminal 2 - Frontend:**
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\frontend"
 npm run dev
 ```
 
 Expected output:
+
 ```
 VITE ready in XXX ms
 ➜ Local: http://localhost:3000
@@ -110,9 +123,11 @@ VITE ready in XXX ms
 ### Step 4: Test Everything
 
 1. **Open browser:** http://localhost:3000
+
    - You should see the CreditSea welcome page
 
 2. **Test backend API:** http://localhost:5000
+
    - You should see JSON with API info
 
 3. **Check MongoDB:**
@@ -181,10 +196,12 @@ Harshdeep/
 ### Tonight (Study Time - 1 hour):
 
 1. **Express.js Basics** (20 mins)
+
    - Watch: "Express JS Crash Course" on YouTube
    - Focus on: routing, middleware, req/res objects
 
 2. **React Basics** (20 mins)
+
    - Watch: "React in 100 Seconds" + "React Hooks"
    - Focus on: components, useState, useEffect
 
@@ -197,16 +214,19 @@ Harshdeep/
 **Goal: Build XML Upload Endpoint**
 
 **Morning (2-3 hours):**
+
 1. Study Multer documentation (30 mins)
 2. Create upload route file (30 mins)
 3. Create upload controller (1 hour)
 4. Test with Postman (30 mins)
 
 **Files you'll create:**
+
 - `backend/routes/uploadRoutes.js`
 - `backend/controllers/uploadController.js`
 
 **What you'll learn:**
+
 - File upload handling
 - Express routing
 - Middleware usage
@@ -217,6 +237,7 @@ Harshdeep/
 ## 📚 Essential Resources
 
 ### Documentation:
+
 - Express.js: https://expressjs.com/
 - React: https://react.dev/
 - MongoDB: https://www.mongodb.com/docs/
@@ -225,6 +246,7 @@ Harshdeep/
 - xml2js: https://www.npmjs.com/package/xml2js
 
 ### Tools You'll Need:
+
 - **Postman**: For API testing - https://www.postman.com/downloads/
 - **MongoDB Compass**: For database viewing - https://www.mongodb.com/try/download/compass
 - **VS Code Extensions**:
@@ -238,27 +260,34 @@ Harshdeep/
 ## 💡 Pro Tips
 
 ### 1. **Test Frequently**
+
 Don't write too much code without testing. Test after every small feature.
 
 ### 2. **Use Console Logs**
+
 ```javascript
-console.log('📍 Debug point:', variable);
+console.log("📍 Debug point:", variable);
 ```
 
 ### 3. **Read Error Messages**
+
 Errors are your friends! They tell you exactly what's wrong.
 
 ### 4. **Commit Often**
+
 ```bash
 git add .
 git commit -m "Add meaningful message"
 ```
 
 ### 5. **Take Breaks**
+
 Follow the Pomodoro Technique: 25 mins work, 5 mins break.
 
 ### 6. **Ask Questions**
+
 When stuck, search:
+
 - "how to [what you want] in express"
 - "react [component name] example"
 - Stack Overflow is your friend!
@@ -268,6 +297,7 @@ When stuck, search:
 ## 🎓 Learning Approach
 
 ### Don't:
+
 ❌ Copy-paste without understanding
 ❌ Try to learn everything at once
 ❌ Skip error messages
@@ -275,6 +305,7 @@ When stuck, search:
 ❌ Be afraid to make mistakes
 
 ### Do:
+
 ✅ Read and understand each line
 ✅ Learn one concept at a time
 ✅ Debug systematically
@@ -286,6 +317,7 @@ When stuck, search:
 ## 🆘 Troubleshooting Quick Guide
 
 ### Backend won't start:
+
 ```powershell
 # Check if port is in use
 netstat -ano | findstr :5000
@@ -298,6 +330,7 @@ npm run dev
 ```
 
 ### Frontend won't start:
+
 ```powershell
 # Clear node modules
 rm -r node_modules
@@ -311,6 +344,7 @@ npm run dev
 ```
 
 ### MongoDB won't connect:
+
 ```powershell
 # Check if running
 net start MongoDB
@@ -323,6 +357,7 @@ mongod
 ```
 
 ### Git issues:
+
 ```powershell
 # Check status
 git status
@@ -340,11 +375,11 @@ git log --oneline
 
 Update this section daily:
 
-| Date | Phase | What I Built | Hours Spent | Notes |
-|------|-------|--------------|-------------|-------|
-| Oct 23 | Setup | Project structure | 1 hr | ✅ Complete |
-| Oct 24 | Upload | XML upload endpoint | ___ | 🔄 In progress |
-| ___ | ___ | ___ | ___ | ___ |
+| Date   | Phase  | What I Built        | Hours Spent | Notes          |
+| ------ | ------ | ------------------- | ----------- | -------------- |
+| Oct 23 | Setup  | Project structure   | 1 hr        | ✅ Complete    |
+| Oct 24 | Upload | XML upload endpoint | \_\_\_      | 🔄 In progress |
+| \_\_\_ | \_\_\_ | \_\_\_              | \_\_\_      | \_\_\_         |
 
 ---
 
@@ -370,6 +405,7 @@ By the end of this project, you will:
 > "The expert in anything was once a beginner."
 
 Remember:
+
 - Every line of code you write makes you better
 - Every error you fix teaches you something
 - Every feature you complete builds confidence
@@ -423,7 +459,7 @@ Before you start coding tomorrow:
 
 **Welcome to your MERN Stack journey!**
 
-*Created on: October 23, 2025*
-*Ready for: Phase 2 - XML Upload Endpoint*
+_Created on: October 23, 2025_
+_Ready for: Phase 2 - XML Upload Endpoint_
 
 🚀 **LET'S BUILD SOMETHING AMAZING!** 🚀

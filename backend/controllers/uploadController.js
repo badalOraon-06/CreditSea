@@ -4,6 +4,7 @@
  */
 
 import { parseXMLFile } from '../utils/xmlParser.js';
+import CreditReport from '../models/CreditReport.js';
 
 // Handle XML file upload
 export const uploadXML = async (req, res) => {
@@ -33,18 +34,46 @@ export const uploadXML = async (req, res) => {
     console.log('   - Credit Score:', parsedData.creditScore.score);
     console.log('   - Total Accounts:', parsedData.reportSummary.totalAccounts);
 
+    // Save to MongoDB
+    console.log('💾 Saving to database...');
+    const creditReport = new CreditReport({
+      fileName: file.filename,
+      originalFileName: file.originalname,
+      fileSize: file.size,
+      reportDate: parsedData.reportDate,
+      reportNumber: parsedData.reportNumber,
+      basicDetails: parsedData.basicDetails,
+      creditScore: parsedData.creditScore,
+      reportSummary: parsedData.reportSummary,
+      creditAccounts: parsedData.creditAccounts,
+      addresses: parsedData.addresses,
+      enquiries: parsedData.enquiries,
+    });
+
+    await creditReport.save();
+
+    console.log('✅ Credit report saved to database!');
+    console.log('   - Report ID:', creditReport._id);
+
     // Return success response with parsed data
-    res.status(200).json({
+    res.status(201).json({
       success: true,
-      message: 'XML file uploaded and parsed successfully!',
+      message: 'XML file uploaded, parsed, and saved successfully!',
       data: {
+        reportId: creditReport._id,
         file: {
           filename: file.filename,
           originalname: file.originalname,
           size: file.size,
-          uploadedAt: new Date()
+          uploadedAt: creditReport.uploadDate
         },
-        creditReport: parsedData
+        creditReport: {
+          basicDetails: creditReport.basicDetails,
+          creditScore: creditReport.creditScore,
+          reportSummary: creditReport.reportSummary,
+          totalAccounts: creditReport.creditAccounts.length,
+          totalAddresses: creditReport.addresses.length,
+        }
       }
     });
 

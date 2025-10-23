@@ -7,12 +7,14 @@
 Open **TWO** terminals/command prompts:
 
 #### Terminal 1 - Backend Setup:
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\backend"
 npm install
 ```
 
 #### Terminal 2 - Frontend Setup:
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\frontend"
 npm install
@@ -25,11 +27,13 @@ This will take 2-3 minutes. ☕
 ### Step 2: Start MongoDB
 
 **Option A - If MongoDB is installed as a service:**
+
 ```powershell
 net start MongoDB
 ```
 
 **Option B - If you need to start manually:**
+
 ```powershell
 mongod
 ```
@@ -42,24 +46,28 @@ Open MongoDB Compass or visit: http://localhost:27017
 ### Step 3: Run the Application
 
 #### Terminal 1 - Start Backend:
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\backend"
 npm run dev
 ```
 
 You should see:
+
 ```
 🚀 Server is running on port 5000
 ✅ MongoDB Connected: localhost
 ```
 
 #### Terminal 2 - Start Frontend:
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\frontend"
 npm run dev
 ```
 
 You should see:
+
 ```
 VITE ready in XXX ms
 ➜ Local: http://localhost:3000
@@ -81,17 +89,20 @@ VITE ready in XXX ms
 Every time you want to work on the project:
 
 ### 1. Start MongoDB
+
 ```powershell
 net start MongoDB
 ```
 
 ### 2. Terminal 1 - Backend
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\backend"
 npm run dev
 ```
 
 ### 3. Terminal 2 - Frontend
+
 ```powershell
 cd "c:\Users\BADAL ORAON\OneDrive\Desktop\Harshdeep\frontend"
 npm run dev
@@ -102,6 +113,7 @@ npm run dev
 ## 🛠️ Useful Commands
 
 ### Backend Commands:
+
 ```powershell
 npm run dev          # Start development server with auto-reload
 npm start            # Start production server
@@ -109,6 +121,7 @@ npm test             # Run tests (when we add them)
 ```
 
 ### Frontend Commands:
+
 ```powershell
 npm run dev          # Start development server
 npm run build        # Build for production
@@ -116,6 +129,7 @@ npm run preview      # Preview production build
 ```
 
 ### Git Commands:
+
 ```powershell
 git status           # Check changes
 git add .            # Stage all changes
@@ -128,7 +142,9 @@ git log              # View commit history
 ## 🐛 Troubleshooting
 
 ### Problem: Port 5000 already in use
+
 **Solution:**
+
 ```powershell
 # Find the process using port 5000
 netstat -ano | findstr :5000
@@ -138,20 +154,26 @@ taskkill /PID <PID> /F
 ```
 
 ### Problem: MongoDB not connecting
+
 **Solutions:**
+
 1. Check if MongoDB is running: `net start MongoDB`
 2. Check MongoDB Compass connection
 3. Verify MONGODB_URI in backend/.env
 
 ### Problem: npm install fails
+
 **Solutions:**
+
 1. Delete `node_modules` folder
 2. Delete `package-lock.json`
 3. Run `npm install` again
 4. Try `npm cache clean --force`
 
 ### Problem: Frontend shows blank page
+
 **Solutions:**
+
 1. Check browser console for errors (F12)
 2. Make sure backend is running
 3. Clear browser cache
@@ -162,11 +184,13 @@ taskkill /PID <PID> /F
 ## 📱 Testing Tools
 
 ### Postman (for API testing)
+
 1. Download: https://www.postman.com/downloads/
 2. Install and create account
 3. Test APIs without frontend
 
 ### MongoDB Compass (for database viewing)
+
 1. Download: https://www.mongodb.com/try/download/compass
 2. Connect to: `mongodb://localhost:27017`
 3. View collections and documents
@@ -176,6 +200,7 @@ taskkill /PID <PID> /F
 ## 📊 Project Status
 
 ### ✅ Completed:
+
 - [x] Project structure
 - [x] Backend skeleton
 - [x] Frontend skeleton
@@ -183,11 +208,13 @@ taskkill /PID <PID> /F
 - [x] Git initialization
 
 ### 🔄 Current Phase:
+
 - [ ] XML Upload endpoint
 - [ ] File validation
 - [ ] Multer setup
 
 ### 📅 Next Up:
+
 - XML parsing
 - Database schema
 - API endpoints
@@ -221,11 +248,13 @@ git commit -m "Initial project setup - MERN stack structure"
 ## 📚 What to Study Tonight
 
 1. **Express.js Basics** (30 mins)
+
    - What is middleware?
    - Routing in Express
    - Request and Response objects
 
 2. **React Basics** (30 mins)
+
    - Components
    - Props and State
    - JSX syntax
