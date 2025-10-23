@@ -151,16 +151,16 @@ Track your progress and stay organized!
 
 ---
 
-## 🎨 Phase 6: Frontend - Upload Page (Days 7-8)
+## 🎨 Phase 6: Frontend - Upload Page (IN PROGRESS - Days 7-8)
 
 ### Frontend Tasks:
 
-- [ ] Create API service (`frontend/src/services/api.js`)
-  - [ ] Setup axios configuration
-  - [ ] Create uploadXML function
-  - [ ] Create getReports function
-  - [ ] Create getReportById function
-  - [ ] Add error handling
+- [x] Create API service (`frontend/src/services/api.js`)
+  - [x] Setup axios configuration
+  - [x] Create uploadXML function
+  - [x] Create getReports function
+  - [x] Create getReportById function
+  - [x] Add error handling
 - [ ] Create Upload page (`frontend/src/pages/UploadPage.jsx`)
   - [ ] Create file input UI
   - [ ] Add drag-and-drop functionality (optional)
@@ -366,10 +366,10 @@ Track your progress and stay organized!
 | ------------------- | ---------- | ---------- | -------- | ------------------------- |
 | 1. Setup            | ✅ Done    | Oct 23     | Oct 23   | Initial structure created |
 | 2. XML Upload       | ✅ Done    | Oct 23     | Oct 23   | Upload endpoint working   |
-| 3. XML Parsing      | ✅ Done       | Oct 23     | Oct 23   | Parser extracts all data  |
-| 4. Database         | ✅ Done       | Oct 23     | Oct 23   | Mongoose schema created   |
-| 5. API              | ✅ Done       | Oct 23     | Oct 23   | All REST endpoints work   |
-| 6. Frontend Upload  | 🔄 Next       | \_\_\_     | \_\_\_   |                           |
+| 3. XML Parsing      | ✅ Done    | Oct 23     | Oct 23   | Parser extracts all data  |
+| 4. Database         | ✅ Done    | Oct 23     | Oct 23   | Mongoose schema created   |
+| 5. API              | ✅ Done    | Oct 23     | Oct 23   | All REST endpoints work   |
+| 6. Frontend Upload  | 🔄 Next    | \_\_\_     | \_\_\_   |                           |
 | 7. Frontend Display | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
 | 8. Styling          | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |
 | 9. Testing          | ⏳ Waiting | \_\_\_     | \_\_\_   |                           |

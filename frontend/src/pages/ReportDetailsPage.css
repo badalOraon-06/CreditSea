@@ -1,0 +1,486 @@
+.report-details-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 1rem;
+}
+
+.details-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header */
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.back-button,
+.delete-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button {
+  background: white;
+  color: #667eea;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.delete-button {
+  background: linear-gradient(135deg, #f56565, #e53e3e);
+  color: white;
+}
+
+.delete-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(245, 101, 101, 0.4);
+}
+
+.delete-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: white;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Error State */
+.error-container {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.error-container h2 {
+  color: #e53e3e;
+  margin-bottom: 1rem;
+}
+
+.error-container p {
+  color: #4a5568;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Card Styles */
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f7fafc;
+}
+
+.card-header h2 {
+  color: #2d3748;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card-body {
+  color: #4a5568;
+}
+
+/* Credit Score Badge */
+.credit-score-badge {
+  text-align: center;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  min-width: 100px;
+}
+
+.credit-score-badge.excellent {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  color: white;
+}
+
+.credit-score-badge.good {
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  color: white;
+}
+
+.credit-score-badge.fair {
+  background: linear-gradient(135deg, #ed8936, #dd6b20);
+  color: white;
+}
+
+.credit-score-badge.poor {
+  background: linear-gradient(135deg, #f56565, #e53e3e);
+  color: white;
+}
+
+.score-value {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.score-label {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Basic Details Card */
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #718096;
+}
+
+.detail-value {
+  font-weight: 500;
+  color: #2d3748;
+  text-align: right;
+}
+
+.pan-value {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #667eea;
+}
+
+/* Summary Card */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.summary-stat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 10px;
+}
+
+.summary-stat .stat-icon {
+  font-size: 2rem;
+}
+
+.summary-stat .stat-content {
+  flex: 1;
+}
+
+.summary-stat .stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d3748;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.summary-stat .stat-label {
+  font-size: 0.85rem;
+  color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Accounts Card */
+.accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.account-item {
+  padding: 1.5rem;
+  background: #f7fafc;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+}
+
+.account-header {
+  margin-bottom: 1rem;
+}
+
+.account-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.account-title h3 {
+  color: #2d3748;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.status-badge.closed {
+  background: #fed7d7;
+  color: #742a2a;
+}
+
+.status-badge.settled {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.status-badge.unknown {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.account-institution {
+  color: #718096;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.account-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.account-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 6px;
+}
+
+.account-detail.overdue {
+  background: #fff5f5;
+  border-left: 3px solid #e53e3e;
+}
+
+.account-detail .label {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.account-detail .value {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.account-detail.overdue .value {
+  color: #e53e3e;
+}
+
+/* Addresses Card */
+.addresses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.address-item {
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 10px;
+}
+
+.address-type {
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.address-text {
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* Upload Info */
+.upload-info {
+  text-align: center;
+  color: white;
+  font-size: 0.95rem;
+  margin-top: 2rem;
+  opacity: 0.9;
+}
+
+/* No Data */
+.no-data {
+  text-align: center;
+  color: #a0aec0;
+  font-style: italic;
+  padding: 2rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .report-details-page {
+    padding: 1rem 0.5rem;
+  }
+
+  .details-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .back-button,
+  .delete-button {
+    width: 100%;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .credit-score-badge {
+    align-self: flex-start;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-details {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .detail-value {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .account-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

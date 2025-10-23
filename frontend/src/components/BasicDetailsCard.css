@@ -1,0 +1,22 @@
+.basic-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.basic-left h3 {
+  margin-bottom: 0.25rem;
+  color: #2d3748;
+}
+
+.meta { color: #718096; font-size: 0.9rem; }
+
+.basic-right { text-align: right; }
+
+.score { font-weight: 700; font-size: 1.6rem; color: #667eea; }
+
+.score-label { font-size: 0.8rem; color: #718096; }

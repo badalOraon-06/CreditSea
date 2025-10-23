@@ -15,6 +15,7 @@
 ## 📤 Test 1: Upload XML and Save to Database
 
 ### Request:
+
 ```
 Method: POST
 URL: http://localhost:5000/api/upload
@@ -24,6 +25,7 @@ Value: Select Sagar_Ugle1.xml
 ```
 
 ### Expected Response:
+
 ```json
 {
   "success": true,
@@ -59,6 +61,7 @@ Value: Select Sagar_Ugle1.xml
 ```
 
 ### Check Backend Console:
+
 ```
 📁 File uploaded successfully
 🔍 Parsing XML file...
@@ -73,12 +76,14 @@ Value: Select Sagar_Ugle1.xml
 ## 📊 Test 2: Get All Reports
 
 ### Request:
+
 ```
 Method: GET
 URL: http://localhost:5000/api/reports
 ```
 
 ### Expected Response:
+
 ```json
 {
   "success": true,
@@ -106,6 +111,7 @@ URL: http://localhost:5000/api/reports
 ## 📄 Test 3: Get Report by ID
 
 ### Request:
+
 ```
 Method: GET
 URL: http://localhost:5000/api/reports/YOUR_REPORT_ID
@@ -114,6 +120,7 @@ URL: http://localhost:5000/api/reports/YOUR_REPORT_ID
 Replace `YOUR_REPORT_ID` with the actual ID from Test 1 response.
 
 ### Expected Response:
+
 Full credit report with all details
 
 ---
@@ -121,12 +128,14 @@ Full credit report with all details
 ## 🔍 Test 4: Get Reports by PAN
 
 ### Request:
+
 ```
 Method: GET
 URL: http://localhost:5000/api/reports/pan/AOZPB0247S
 ```
 
 ### Expected Response:
+
 All reports for that PAN number
 
 ---
@@ -134,12 +143,14 @@ All reports for that PAN number
 ## 📱 Test 5: Get Reports by Mobile
 
 ### Request:
+
 ```
 Method: GET
 URL: http://localhost:5000/api/reports/mobile/9819137672
 ```
 
 ### Expected Response:
+
 All reports for that mobile number
 
 ---
@@ -147,12 +158,14 @@ All reports for that mobile number
 ## 📈 Test 6: Get Statistics
 
 ### Request:
+
 ```
 Method: GET
 URL: http://localhost:5000/api/reports/stats
 ```
 
 ### Expected Response:
+
 ```json
 {
   "success": true,
@@ -168,12 +181,14 @@ URL: http://localhost:5000/api/reports/stats
 ## 🗑️ Test 7: Delete Report (Soft Delete)
 
 ### Request:
+
 ```
 Method: DELETE
 URL: http://localhost:5000/api/reports/YOUR_REPORT_ID
 ```
 
 ### Expected Response:
+
 ```json
 {
   "success": true,
@@ -189,6 +204,7 @@ URL: http://localhost:5000/api/reports/YOUR_REPORT_ID
 ## 🔄 Test 8: Pagination
 
 ### Request:
+
 ```
 Method: GET
 URL: http://localhost:5000/api/reports?page=1&limit=5
@@ -201,6 +217,7 @@ Upload multiple files first, then test pagination.
 ## 🔍 Test 9: Filter by PAN (Query Parameter)
 
 ### Request:
+
 ```
 Method: GET
 URL: http://localhost:5000/api/reports?pan=AOZPB0247S
@@ -236,18 +253,22 @@ URL: http://localhost:5000/api/reports?pan=AOZPB0247S
 ## 🐛 Troubleshooting
 
 ### Error: "Cannot POST /api/reports"
+
 - Reports endpoint is GET only
 - Use POST for /api/upload
 
 ### Error: "Invalid report ID format"
+
 - Check the ID is a valid MongoDB ObjectId (24 hex characters)
 - Copy ID from upload response
 
 ### Error: "Credit report not found"
+
 - Report might be soft-deleted (isActive: false)
 - Check MongoDB Compass
 
 ### No data in response
+
 - Make sure you've uploaded at least one XML file
 - Check MongoDB connection
 
@@ -256,6 +277,7 @@ URL: http://localhost:5000/api/reports?pan=AOZPB0247S
 ## 🎯 Next Steps
 
 Once all tests pass:
+
 1. ✅ Upload functionality working
 2. ✅ Data saved to MongoDB
 3. ✅ All API endpoints working
