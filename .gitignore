@@ -6,3 +6,15 @@ dist/
 build/
 uploads/*
 !uploads/.gitkeep
+
+# Internal development documentation
+PHASE3_SUMMARY.md
+PROJECT_COMPLETE.md
+PROJECT_REQUIREMENTS_CHECKLIST.md
+LEARNING_GUIDE.md
+QUICK_STATUS.md
+TESTING_CHECKLIST.md
+API_TESTING_GUIDE.md
+TESTING_GUIDE.md
+TODO.md
+project .md

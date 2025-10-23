@@ -1,71 +1,177 @@
 # 🏦 CreditSea - Credit Report Analyzer
 
-A full-stack MERN application for processing and analyzing Experian XML credit reports.
+> A full-stack MERN application for processing and analyzing Experian XML credit reports.
 
-## 📋 Project Overview
+[![Node.js](https://img.shields.io/badge/Node.js-v16+-green.svg)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-v18.3-blue.svg)](https://reactjs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-v5+-green.svg)](https://www.mongodb.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This application allows users to:
+---
 
-- Upload XML files containing soft credit pull data from Experian
-- Extract and process credit information
-- Store data in MongoDB
-- View comprehensive credit reports through a React interface
+## 📋 Table of Contents
+
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [API Documentation](#api-documentation)
+- [Screenshots](#screenshots)
+- [Demo Video](#demo-video)
+- [Data Schema](#data-schema)
+- [Troubleshooting](#troubleshooting)
+- [Author](#author)
+
+---
+
+## 📖 About the Project
+
+**CreditSea** is a comprehensive credit report management system built as part of a fullstack engineering assignment. The application processes XML files containing soft credit pull data from Experian, extracts relevant information, stores it in MongoDB, and presents it through an intuitive React interface.
+
+### Key Capabilities
+
+✅ **Upload & Parse** - Upload Experian XML files with instant parsing  
+✅ **Data Extraction** - Automatically extract all credit information  
+✅ **Secure Storage** - Store data in MongoDB with optimized schema  
+✅ **Visual Reports** - View comprehensive credit reports with intuitive UI  
+✅ **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+
+---
+
+## ✨ Features
+
+### Core Features
+
+- 📤 **XML File Upload** - Secure file upload with validation (XML only, max 10MB)
+- 🔍 **Intelligent Parsing** - Extracts all relevant data from complex XML structure
+- 💾 **MongoDB Storage** - Efficient data storage with indexed queries
+- 📊 **Comprehensive Reports** - Display basic details, summaries, and account information
+- 🎨 **Modern UI** - Clean, professional interface with smooth navigation
+- ⚡ **Real-time Processing** - Instant parsing and display after upload
+
+### Additional Features
+
+- 🔢 **Pagination** - Navigate through multiple reports efficiently
+- 🎯 **Credit Score Visualization** - Color-coded scores (Excellent, Good, Fair, Poor)
+- 📱 **Responsive Design** - Optimized for all screen sizes
+- 🗑️ **Soft Delete** - Remove reports without permanent deletion
+- 🔐 **Data Validation** - Comprehensive input validation and error handling
+- 📈 **Statistics** - View aggregate credit report statistics
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, React Router, Vite
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB with Mongoose
-- **File Processing**: Multer, xml2js
+### Frontend
+- **React 18.3** - UI library
+- **React Router 6** - Client-side routing
+- **Axios** - HTTP client for API calls
+- **Vite** - Fast build tool and dev server
+- **CSS3** - Custom styling with responsive design
+
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js 4.21** - Web application framework
+- **Multer** - File upload middleware
+- **xml2js** - XML parsing library
+- **CORS** - Cross-origin resource sharing
+
+### Database
+- **MongoDB** - NoSQL database
+- **Mongoose 8.19** - ODM for MongoDB
+
+### Development Tools
+- **Nodemon** - Auto-restart server on changes
+- **Git** - Version control
+
+---
 
 ## 📁 Project Structure
 
 ```
-Harshdeep/
-├── backend/               # Express.js backend
-│   ├── config/           # Database & app configuration
-│   ├── controllers/      # Route controllers
-│   ├── models/           # MongoDB schemas
-│   ├── routes/           # API routes
-│   ├── utils/            # Helper functions & XML parser
-│   ├── uploads/          # Uploaded XML files storage
-│   └── server.js         # Entry point
-├── frontend/             # React frontend
-│   └── src/
-│       ├── components/   # Reusable components
-│       ├── pages/        # Page components
-│       └── services/     # API service layer
-└── sample-xml-files/     # Sample Experian XML files
+CreditSea/
+│
+├── backend/                      # Express.js Backend
+│   ├── config/
+│   │   ├── database.js          # MongoDB connection
+│   │   └── multer.js            # File upload configuration
+│   ├── controllers/
+│   │   ├── uploadController.js  # File upload logic
+│   │   └── reportController.js  # Report CRUD operations
+│   ├── models/
+│   │   └── CreditReport.js      # MongoDB schema
+│   ├── routes/
+│   │   ├── uploadRoutes.js      # Upload endpoints
+│   │   └── reportRoutes.js      # Report endpoints
+│   ├── utils/
+│   │   └── xmlParser.js         # XML parsing utility (317 lines)
+│   ├── uploads/                 # Uploaded XML files storage
+│   ├── .env                     # Environment variables
+│   ├── package.json             # Backend dependencies
+│   └── server.js                # Application entry point
+│
+├── frontend/                     # React Frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── BasicDetailsCard.jsx
+│   │   │   ├── BasicDetailsCard.css
+│   │   │   ├── LoadingSpinner.jsx
+│   │   │   └── LoadingSpinner.css
+│   │   ├── pages/
+│   │   │   ├── UploadPage.jsx        # File upload interface
+│   │   │   ├── UploadPage.css
+│   │   │   ├── ReportListPage.jsx    # All reports list
+│   │   │   ├── ReportListPage.css
+│   │   │   ├── ReportDetailsPage.jsx # Detailed report view
+│   │   │   └── ReportDetailsPage.css
+│   │   ├── services/
+│   │   │   └── api.js               # Axios API service
+│   │   ├── App.jsx                  # Main app component
+│   │   ├── App.css                  # Global styles
+│   │   ├── main.jsx                 # React entry point
+│   │   └── index.css                # Base CSS
+│   ├── index.html
+│   ├── package.json                 # Frontend dependencies
+│   └── vite.config.js               # Vite configuration
+│
+├── sample-xml-files/                # Sample Experian XML files
+│   └── Sagar_Ugle1.xml
+│
+├── README.md                        # This file
+└── .gitignore                       # Git ignore rules
 ```
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-Make sure you have these installed:
+Ensure you have the following installed on your system:
 
-- Node.js (v16 or higher)
-- MongoDB (v5 or higher)
-- npm or yarn
-- Git
+- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
+- **MongoDB** (v5 or higher) - [Download](https://www.mongodb.com/try/download/community)
+- **npm** (comes with Node.js) or **yarn**
+- **Git** - [Download](https://git-scm.com/)
 
 ### Installation
 
-#### 1. Clone the repository
+#### 1️⃣ Clone the Repository
 
 ```bash
-git clone <your-repo-url>
-cd Harshdeep
+git clone https://github.com/badalOraon-06/CreditSea.git
+cd CreditSea
 ```
 
-#### 2. Setup Backend
+#### 2️⃣ Backend Setup
 
 ```bash
 cd backend
 npm install
 ```
 
-Create a `.env` file in the backend folder (already created):
+Create a `.env` file in the `backend` folder:
 
 ```env
 PORT=5000
@@ -75,173 +181,440 @@ MAX_FILE_SIZE=10485760
 UPLOAD_DIR=./uploads
 ```
 
-#### 3. Setup Frontend
+#### 3️⃣ Frontend Setup
 
 ```bash
 cd ../frontend
 npm install
 ```
 
-#### 4. Start MongoDB
+#### 4️⃣ Start MongoDB
 
-Make sure MongoDB is running on your system:
-
+**Windows:**
 ```bash
-# Windows (if MongoDB is installed as a service)
 net start MongoDB
+```
 
-# Or run mongod directly
-mongod
+**Mac/Linux:**
+```bash
+sudo systemctl start mongod
+# OR
+mongod --dbpath /path/to/data/directory
+```
+
+Verify MongoDB is running:
+```bash
+mongosh
+# or
+mongo
 ```
 
 ### Running the Application
 
-#### Start Backend (Terminal 1)
+#### Start Backend Server
 
+Open Terminal 1:
 ```bash
 cd backend
 npm run dev
 ```
 
-Backend will run on: http://localhost:5000
+Expected output:
+```
+🚀 Server is running on port 5000
+✅ MongoDB Connected: localhost
+📊 Database: creditsea
+```
 
-#### Start Frontend (Terminal 2)
+Backend API: `http://localhost:5000`
 
+#### Start Frontend Server
+
+Open Terminal 2:
 ```bash
 cd frontend
 npm run dev
 ```
 
-Frontend will run on: http://localhost:3000
+Expected output:
+```
+VITE v5.4.21  ready in XXX ms
 
-## 📊 API Endpoints
-
-| Method | Endpoint           | Description         |
-| ------ | ------------------ | ------------------- |
-| GET    | `/`                | API health check    |
-| POST   | `/api/upload`      | Upload XML file     |
-| GET    | `/api/reports`     | Get all reports     |
-| GET    | `/api/reports/:id` | Get specific report |
-
-## 🎯 Development Roadmap
-
-### ✅ Phase 1: Setup (COMPLETED)
-
-- [x] Project structure created
-- [x] Backend initialized with Express
-- [x] Frontend initialized with React + Vite
-- [x] MongoDB connection configured
-- [x] Basic routing setup
-
-### 📝 Phase 2: XML Upload (NEXT)
-
-- [ ] Create file upload endpoint
-- [ ] Add Multer middleware
-- [ ] Implement file validation
-- [ ] Test with Postman
-
-### 🔍 Phase 3: XML Parsing
-
-- [ ] Parse XML files
-- [ ] Extract basic details
-- [ ] Extract report summary
-- [ ] Extract credit account info
-
-### 💾 Phase 4: Database
-
-- [ ] Design MongoDB schema
-- [ ] Create Mongoose models
-- [ ] Implement data persistence
-
-### 🌐 Phase 5: API Development
-
-- [ ] Create GET endpoints
-- [ ] Add error handling
-- [ ] Test all endpoints
-
-### 🎨 Phase 6: Frontend Development
-
-- [ ] Upload page UI
-- [ ] Report display page
-- [ ] Styling & responsiveness
-
-### 🔗 Phase 7: Integration
-
-- [ ] Connect frontend to backend
-- [ ] End-to-end testing
-- [ ] Bug fixes
-
-### 📚 Phase 8: Documentation
-
-- [ ] Complete README
-- [ ] Add code comments
-- [ ] Record demo video
-
-## 🧪 Testing
-
-```bash
-# Backend tests
-cd backend
-npm test
-
-# Frontend tests
-cd frontend
-npm test
+➜  Local:   http://localhost:3000/
+➜  Network: use --host to expose
 ```
 
-## 📦 Data Extraction Schema
-
-The application extracts the following information:
-
-### Basic Details
-
-- Name
-- Mobile Phone
-- PAN
-- Credit Score
-
-### Report Summary
-
-- Total accounts
-- Active/Closed accounts
-- Current balance
-- Secured/Unsecured amounts
-- Recent credit enquiries
-
-### Credit Accounts
-
-- Credit cards details
-- Bank information
-- Addresses
-- Account numbers
-- Overdue amounts
-- Current balances
-
-## 🤝 Contributing
-
-This is a learning project. Feel free to:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📝 License
-
-This project is created for educational purposes.
-
-## 👨‍💻 Author
-
-**Your Name**
-
-- GitHub: [@yourusername]
-- LinkedIn: [Your LinkedIn]
-
-## 🙏 Acknowledgments
-
-- CreditSea for the assignment
-- MERN stack community
+Frontend App: `http://localhost:3000`
 
 ---
 
-**Happy Coding! 🚀**
+## 📡 API Documentation
+
+### Base URL
+```
+http://localhost:5000/api
+```
+
+### Endpoints
+
+#### 1. Health Check
+```http
+GET /
+```
+**Response:**
+```json
+{
+  "message": "CreditSea API is running!",
+  "version": "1.0.0",
+  "endpoints": {
+    "upload": "POST /api/upload",
+    "reports": "GET /api/reports",
+    "report": "GET /api/reports/:id"
+  }
+}
+```
+
+#### 2. Upload XML File
+```http
+POST /api/upload
+Content-Type: multipart/form-data
+```
+
+**Request Body:**
+| Field | Type | Description |
+|-------|------|-------------|
+| xmlFile | File | XML file (max 10MB) |
+
+**Response (201):**
+```json
+{
+  "success": true,
+  "message": "XML file uploaded, parsed, and saved successfully!",
+  "data": {
+    "reportId": "68fa40375541622171d217ef",
+    "file": {
+      "filename": "Sagar_Ugle1-1761225505125.xml",
+      "originalname": "Sagar_Ugle1.xml",
+      "size": 125648,
+      "uploadedAt": "2025-10-23T10:30:00.000Z"
+    },
+    "creditReport": {
+      "basicDetails": { ... },
+      "creditScore": { ... },
+      "reportSummary": { ... }
+    }
+  }
+}
+```
+
+#### 3. Get All Reports
+```http
+GET /api/reports?page=1&limit=10
+```
+
+**Query Parameters:**
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| page | Number | 1 | Page number |
+| limit | Number | 10 | Results per page |
+| pan | String | - | Filter by PAN |
+| mobile | String | - | Filter by mobile |
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "count": 10,
+  "total": 25,
+  "page": 1,
+  "pages": 3,
+  "data": [ ... ]
+}
+```
+
+#### 4. Get Report by ID
+```http
+GET /api/reports/:id
+```
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "_id": "68fa40375541622171d217ef",
+    "basicDetails": {
+      "fullName": "Sagar Ugle",
+      "pan": "AOZPB0247S",
+      "mobilePhone": "9819137672",
+      "dateOfBirth": "1990-01-15",
+      "gender": "Male"
+    },
+    "creditScore": {
+      "score": 719,
+      "confidenceLevel": "High"
+    },
+    "reportSummary": {
+      "totalAccounts": 4,
+      "activeAccounts": 3,
+      "closedAccounts": 1,
+      "currentBalance": 245000,
+      "securedAccountsAmount": 85000,
+      "unsecuredAccountsAmount": 160000
+    },
+    "creditAccounts": [ ... ],
+    "addresses": [ ... ]
+  }
+}
+```
+
+#### 5. Delete Report (Soft Delete)
+```http
+DELETE /api/reports/:id
+```
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "message": "Credit report deleted successfully",
+  "data": {
+    "id": "68fa40375541622171d217ef"
+  }
+}
+```
+
+### Error Responses
+
+**400 Bad Request:**
+```json
+{
+  "success": false,
+  "message": "No file uploaded. Please select an XML file."
+}
+```
+
+**404 Not Found:**
+```json
+{
+  "success": false,
+  "message": "Credit report not found"
+}
+```
+
+**500 Internal Server Error:**
+```json
+{
+  "success": false,
+  "message": "Error uploading or parsing file",
+  "error": "Detailed error message"
+}
+```
+
+---
+
+## 📸 Screenshots
+
+### 1. Home Page
+> Professional landing page with feature overview
+
+*[Screenshot placeholder - Add image after taking screenshot]*
+
+### 2. Upload Page
+> Drag-and-drop XML file upload with validation
+
+*[Screenshot placeholder - Add image after taking screenshot]*
+
+### 3. Report List
+> View all uploaded credit reports with pagination
+
+*[Screenshot placeholder - Add image after taking screenshot]*
+
+### 4. Report Details - Basic Info
+> Comprehensive view of personal details and credit score
+
+*[Screenshot placeholder - Add image after taking screenshot]*
+
+### 5. Report Details - Credit Accounts
+> Detailed breakdown of all credit accounts
+
+*[Screenshot placeholder - Add image after taking screenshot]*
+
+---
+
+## 🎥 Demo Video
+
+> 3-5 minute walkthrough demonstrating all features
+
+**Video Link:** *[YouTube/Drive link placeholder - Add after recording]*
+
+**What's Covered:**
+1. Application overview and architecture (30 sec)
+2. Uploading and parsing XML file (1 min)
+3. Viewing report list and details (1.5 min)
+4. Code structure walkthrough (1.5 min)
+5. Closing remarks (30 sec)
+
+---
+
+## 💾 Data Schema
+
+### MongoDB Schema Design
+
+#### CreditReport Model
+
+```javascript
+{
+  // File Information
+  fileName: String,
+  originalFileName: String,
+  fileSize: Number,
+  uploadDate: Date,
+  
+  // Basic Details
+  basicDetails: {
+    firstName: String,
+    lastName: String,
+    fullName: String (required),
+    mobilePhone: String,
+    pan: String (required, uppercase),
+    dateOfBirth: String,
+    gender: String
+  },
+  
+  // Credit Score
+  creditScore: {
+    score: Number (300-900, required),
+    confidenceLevel: String,
+    range: String
+  },
+  
+  // Report Summary
+  reportSummary: {
+    totalAccounts: Number,
+    activeAccounts: Number,
+    closedAccounts: Number,
+    currentBalance: Number,
+    securedAccountsAmount: Number,
+    unsecuredAccountsAmount: Number,
+    last7DaysCreditEnquiries: Number
+  },
+  
+  // Credit Accounts Array
+  creditAccounts: [{
+    accountNumber: String (required),
+    bank: String (required),
+    accountType: String (required),
+    portfolioType: String,
+    openDate: String,
+    closedDate: String,
+    creditLimit: Number,
+    currentBalance: Number,
+    amountOverdue: Number,
+    accountStatus: String,
+    paymentRating: String
+  }],
+  
+  // Addresses Array
+  addresses: [{
+    line1: String,
+    line2: String,
+    line3: String,
+    city: String,
+    state: String,
+    postalCode: String
+  }],
+  
+  // Metadata
+  isActive: Boolean (default: true),
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### MongoDB Connection Issues
+
+**Problem:** `MongoServerError: connect ECONNREFUSED`
+
+**Solution:**
+```bash
+# Check if MongoDB is running
+mongosh
+
+# If not, start MongoDB
+net start MongoDB  # Windows
+sudo systemctl start mongod  # Linux
+brew services start mongodb-community  # Mac
+```
+
+### Port Already in Use
+
+**Problem:** `Error: listen EADDRINUSE: address already in use :::5000`
+
+**Solution:**
+```bash
+# Windows - Find and kill process
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+
+# Mac/Linux
+lsof -ti:5000 | xargs kill -9
+```
+
+### File Upload Fails
+
+**Problem:** File upload returns 400 error
+
+**Solutions:**
+- Ensure file is `.xml` format
+- Check file size is under 10MB
+- Verify backend server is running
+- Check `uploads` directory exists and has write permissions
+
+---
+
+## 📄 License
+
+This project is created for educational purposes as part of the CreditSea Fullstack Engineer Assignment.
+
+---
+
+## 👨‍💻 Author
+
+**Badal Oraon**
+
+- GitHub: [@badalOraon-06](https://github.com/badalOraon-06)
+- Repository: [CreditSea](https://github.com/badalOraon-06/CreditSea)
+- LinkedIn: *[Add your LinkedIn profile]*
+
+---
+
+## 🙏 Acknowledgments
+
+- **CreditSea** - For the assignment opportunity
+- **MERN Stack Community** - For excellent documentation and resources
+- **Experian** - For XML data format specification
+
+---
+
+## 📝 Project Status
+
+**Status:** ✅ Complete and Ready for Submission
+
+**Completion:** 95% (Pending: Final screenshots and demo video)
+
+**Last Updated:** October 23, 2025
+
+---
+
+<div align="center">
+
+**⭐ If you found this project helpful, please consider giving it a star! ⭐**
+
+Made with ❤️ by Badal Oraon
+
+</div>
