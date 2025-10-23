@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreditReport>
+  <Header>
+    <ReportDate>2025-10-20</ReportDate>
+    <ReportType>Soft Pull</ReportType>
+    <Bureau>Experian</Bureau>
+  </Header>
+  
+  <PersonalDetails>
+    <Name>
+      <FirstName>Rajesh</FirstName>
+      <LastName>Kumar</LastName>
+      <FullName>Rajesh Kumar</FullName>
+    </Name>
+    <ContactInfo>
+      <MobilePhone>9876543210</MobilePhone>
+      <Email>rajesh.kumar@email.com</Email>
+    </ContactInfo>
+    <Identification>
+      <PAN>ABCDE1234F</PAN>
+      <DateOfBirth>1990-05-15</DateOfBirth>
+    </Identification>
+    <Addresses>
+      <Address>
+        <Type>Current</Type>
+        <Line1>123 MG Road</Line1>
+        <City>Mumbai</City>
+        <State>Maharashtra</State>
+        <PostalCode>400001</PostalCode>
+      </Address>
+      <Address>
+        <Type>Permanent</Type>
+        <Line1>456 Park Street</Line1>
+        <City>Kolkata</City>
+        <State>West Bengal</State>
+        <PostalCode>700016</PostalCode>
+      </Address>
+    </Addresses>
+  </PersonalDetails>
+  
+  <CreditScore>
+    <Score>750</Score>
+    <ScoreDate>2025-10-20</ScoreDate>
+    <ScoreRange>300-900</ScoreRange>
+  </CreditScore>
+  
+  <ReportSummary>
+    <TotalAccounts>8</TotalAccounts>
+    <ActiveAccounts>6</ActiveAccounts>
+    <ClosedAccounts>2</ClosedAccounts>
+    <CurrentBalance>450000</CurrentBalance>
+    <SecuredAccountsAmount>300000</SecuredAccountsAmount>
+    <UnsecuredAccountsAmount>150000</UnsecuredAccountsAmount>
+    <Last7DaysCreditEnquiries>2</Last7DaysCreditEnquiries>
+  </ReportSummary>
+  
+  <CreditAccounts>
+    <Account>
+      <AccountType>Credit Card</AccountType>
+      <Bank>HDFC Bank</Bank>
+      <AccountNumber>XXXX-XXXX-XXXX-1234</AccountNumber>
+      <OpenedDate>2020-03-15</OpenedDate>
+      <Status>Active</Status>
+      <CreditLimit>100000</CreditLimit>
+      <CurrentBalance>25000</CurrentBalance>
+      <AmountOverdue>0</AmountOverdue>
+      <PaymentHistory>
+        <LastPaymentDate>2025-10-05</LastPaymentDate>
+        <LastPaymentAmount>10000</LastPaymentAmount>
+      </PaymentHistory>
+    </Account>
+    
+    <Account>
+      <AccountType>Credit Card</AccountType>
+      <Bank>ICICI Bank</Bank>
+      <AccountNumber>XXXX-XXXX-XXXX-5678</AccountNumber>
+      <OpenedDate>2021-06-20</OpenedDate>
+      <Status>Active</Status>
+      <CreditLimit>150000</CreditLimit>
+      <CurrentBalance>45000</CurrentBalance>
+      <AmountOverdue>0</AmountOverdue>
+      <PaymentHistory>
+        <LastPaymentDate>2025-10-10</LastPaymentDate>
+        <LastPaymentAmount>15000</LastPaymentAmount>
+      </PaymentHistory>
+    </Account>
+    
+    <Account>
+      <AccountType>Personal Loan</AccountType>
+      <Bank>State Bank of India</Bank>
+      <AccountNumber>XXXX-XXXX-9876</AccountNumber>
+      <OpenedDate>2019-01-10</OpenedDate>
+      <Status>Active</Status>
+      <LoanAmount>500000</LoanAmount>
+      <CurrentBalance>180000</CurrentBalance>
+      <AmountOverdue>0</AmountOverdue>
+      <EMI>15000</EMI>
+      <PaymentHistory>
+        <LastPaymentDate>2025-10-01</LastPaymentDate>
+        <LastPaymentAmount>15000</LastPaymentAmount>
+      </PaymentHistory>
+    </Account>
+    
+    <Account>
+      <AccountType>Home Loan</AccountType>
+      <Bank>HDFC Bank</Bank>
+      <AccountNumber>XXXX-XXXX-4321</AccountNumber>
+      <OpenedDate>2018-08-25</OpenedDate>
+      <Status>Active</Status>
+      <LoanAmount>3000000</LoanAmount>
+      <CurrentBalance>2500000</CurrentBalance>
+      <AmountOverdue>0</AmountOverdue>
+      <EMI>25000</EMI>
+      <PaymentHistory>
+        <LastPaymentDate>2025-10-01</LastPaymentDate>
+        <LastPaymentAmount>25000</LastPaymentAmount>
+      </PaymentHistory>
+    </Account>
+    
+    <Account>
+      <AccountType>Credit Card</AccountType>
+      <Bank>Axis Bank</Bank>
+      <AccountNumber>XXXX-XXXX-XXXX-8765</AccountNumber>
+      <OpenedDate>2022-02-14</OpenedDate>
+      <Status>Closed</Status>
+      <CreditLimit>75000</CreditLimit>
+      <CurrentBalance>0</CurrentBalance>
+      <AmountOverdue>0</AmountOverdue>
+      <ClosedDate>2024-08-15</ClosedDate>
+    </Account>
+  </CreditAccounts>
+  
+  <Enquiries>
+    <Enquiry>
+      <Date>2025-10-18</Date>
+      <Institution>ICICI Bank</Institution>
+      <Type>Credit Card</Type>
+    </Enquiry>
+    <Enquiry>
+      <Date>2025-10-16</Date>
+      <Institution>Bajaj Finserv</Institution>
+      <Type>Personal Loan</Type>
+    </Enquiry>
+  </Enquiries>
+</CreditReport>
