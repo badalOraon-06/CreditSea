@@ -88,13 +88,17 @@ const extractBasicDetails = (report) => {
   const applicant = report.Current_Application?.Current_Application_Details?.Current_Applicant_Details || {};
   const holderDetails = getFirstAccountHolderDetails(report);
   
+  // Prioritize holderDetails.Date_of_birth over applicant.Date_Of_Birth_Applicant
+  // as the applicant field often contains dummy data
+  const dob = formatDate(holderDetails.Date_of_birth || applicant.Date_Of_Birth_Applicant || '');
+  
   return {
     firstName: applicant.First_Name || holderDetails.First_Name_Non_Normalized || '',
     lastName: applicant.Last_Name || holderDetails.Surname_Non_Normalized || '',
     fullName: `${applicant.First_Name || holderDetails.First_Name_Non_Normalized || ''} ${applicant.Last_Name || holderDetails.Surname_Non_Normalized || ''}`.trim(),
     mobilePhone: applicant.MobilePhoneNumber || holderDetails.Telephone_Number || '',
     pan: applicant.IncomeTaxPan || holderDetails.Income_TAX_PAN || '',
-    dateOfBirth: formatDate(applicant.Date_Of_Birth_Applicant || holderDetails.Date_of_birth || ''),
+    dateOfBirth: dob,
     gender: applicant.Gender_Code || holderDetails.Gender_Code || '',
   };
 };
@@ -228,6 +232,7 @@ const getFirstAccountHolderDetails = (report) => {
 
 /**
  * Helper: Format date from YYYYMMDD to YYYY-MM-DD
+ * Filters out invalid/dummy dates (year < 1900)
  */
 const formatDate = (dateStr) => {
   if (!dateStr || dateStr.length !== 8) return '';
@@ -235,6 +240,9 @@ const formatDate = (dateStr) => {
   const year = dateStr.substring(0, 4);
   const month = dateStr.substring(4, 6);
   const day = dateStr.substring(6, 8);
+  
+  // Filter out dummy/invalid dates (year before 1900)
+  if (parseInt(year) < 1900) return '';
   
   return `${year}-${month}-${day}`;
 };
