@@ -4,6 +4,7 @@
  */
 
 import CreditReport from '../models/CreditReport.js';
+import connectDB from '../config/database.js';
 
 /**
  * Get all credit reports
@@ -11,6 +12,9 @@ import CreditReport from '../models/CreditReport.js';
  */
 export const getAllReports = async (req, res) => {
   try {
+    // Connect to database (lazy connection for serverless)
+    await connectDB();
+
     const { page = 1, limit = 10, pan, mobile } = req.query;
     
     // Build query
@@ -64,7 +68,8 @@ export const getAllReports = async (req, res) => {
  */
 export const getReportById = async (req, res) => {
   try {
-    const { id } = req.params;
+    await connectDB();
+    const { id} = req.params;
     
     const report = await CreditReport.findById(id).select('-__v');
     
@@ -109,6 +114,7 @@ export const getReportById = async (req, res) => {
  */
 export const getReportsByPAN = async (req, res) => {
   try {
+    await connectDB();
     const { pan } = req.params;
     
     const reports = await CreditReport.findByPAN(pan);
@@ -137,6 +143,7 @@ export const getReportsByPAN = async (req, res) => {
  */
 export const getReportsByMobile = async (req, res) => {
   try {
+    await connectDB();
     const { mobile } = req.params;
     
     const reports = await CreditReport.findByMobile(mobile);
@@ -165,6 +172,7 @@ export const getReportsByMobile = async (req, res) => {
  */
 export const deleteReport = async (req, res) => {
   try {
+    await connectDB();
     const { id } = req.params;
     
     const report = await CreditReport.findById(id);
@@ -212,6 +220,7 @@ export const deleteReport = async (req, res) => {
  */
 export const getReportStats = async (req, res) => {
   try {
+    await connectDB();
     const totalReports = await CreditReport.countDocuments({ isActive: true });
     const avgCreditScore = await CreditReport.aggregate([
       { $match: { isActive: true } },

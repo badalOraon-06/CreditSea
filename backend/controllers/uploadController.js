@@ -5,10 +5,14 @@
 
 import { parseXMLFile } from '../utils/xmlParser.js';
 import CreditReport from '../models/CreditReport.js';
+import connectDB from '../config/database.js';
 
 // Handle XML file upload
 export const uploadXML = async (req, res) => {
   try {
+    // Connect to database (lazy connection for serverless)
+    await connectDB();
+
     // Check if file was uploaded
     if (!req.file) {
       return res.status(400).json({

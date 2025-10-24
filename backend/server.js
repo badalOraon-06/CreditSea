@@ -28,8 +28,10 @@ app.options('*', cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB only in non-serverless environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  connectDB();
+}
 
 // Test route
 app.get('/', (req, res) => {
