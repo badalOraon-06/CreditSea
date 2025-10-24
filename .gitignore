@@ -27,3 +27,8 @@ uploads/*
 # Internal docs and temp files
 New folder/
 *.tmp
+
+# Deployment documentation (keep local only)
+DEPLOYMENT_*.md
+VERCEL_*.md
+BUGFIX_*.md
