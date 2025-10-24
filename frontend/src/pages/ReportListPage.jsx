@@ -38,13 +38,6 @@ const ReportListPage = () => {
     return 'poor';
   };
 
-  const getCreditScoreLabel = (score) => {
-    if (score >= 750) return 'Excellent';
-    if (score >= 650) return 'Good';
-    if (score >= 550) return 'Fair';
-    return 'Needs Improvement';
-  };
-
   if (loading) {
     return (
       <div className="report-list-page">
@@ -60,11 +53,11 @@ const ReportListPage = () => {
     return (
       <div className="report-list-page">
         <div className="error-container">
-          <div className="error-icon">❌</div>
-          <h2>Error Loading Reports</h2>
+          <div className="error-icon">!</div>
+          <h2>Error</h2>
           <p>{error}</p>
           <button onClick={fetchReports} className="btn btn-primary">
-            Try Again
+            Retry
           </button>
         </div>
       </div>
@@ -75,15 +68,15 @@ const ReportListPage = () => {
     <div className="report-list-page">
       <div className="reports-container">
         <div className="reports-header">
-          <h1>📊 Credit Reports</h1>
-          <p>View all uploaded credit reports</p>
+          <h1>Credit Reports</h1>
+          <p>All uploaded reports</p>
         </div>
 
         {reports.length === 0 ? (
           <div className="no-reports">
-            <div className="no-reports-icon">📭</div>
-            <h2>No Reports Found</h2>
-            <p>Upload an XML file to get started</p>
+            <div className="no-reports-icon">�</div>
+            <h2>No Reports</h2>
+            <p>Upload a report to get started</p>
             <Link to="/upload" className="btn btn-primary">
               Upload Report
             </Link>
@@ -101,44 +94,62 @@ const ReportListPage = () => {
                     <div className="report-name">
                       <h3>{report.basicDetails.fullName}</h3>
                       <p className="report-pan">{report.basicDetails.pan}</p>
+                      {report.basicDetails.dateOfBirth && (
+                        <p className="report-dob">
+                          DOB: {new Date(report.basicDetails.dateOfBirth).toLocaleDateString('en-IN', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric'
+                          })}
+                        </p>
+                      )}
                     </div>
                     <div className={`credit-score ${getCreditScoreColor(report.creditScore.score)}`}>
                       <div className="score-value">{report.creditScore.score}</div>
-                      <div className="score-label">{getCreditScoreLabel(report.creditScore.score)}</div>
                     </div>
                   </div>
 
                   <div className="report-card-body">
                     <div className="report-stat">
-                      <span className="stat-icon">💳</span>
                       <div className="stat-content">
                         <div className="stat-value">{report.reportSummary.totalAccounts}</div>
-                        <div className="stat-label">Total Accounts</div>
+                        <div>Total Accounts</div>
                       </div>
                     </div>
 
                     <div className="report-stat">
-                      <span className="stat-icon">✅</span>
                       <div className="stat-content">
                         <div className="stat-value">{report.reportSummary.activeAccounts}</div>
-                        <div className="stat-label">Active</div>
+                        <div>Active</div>
                       </div>
                     </div>
 
                     <div className="report-stat">
-                      <span className="stat-icon">💰</span>
                       <div className="stat-content">
-                        <div className="stat-value">
-                          ₹{(report.reportSummary.currentBalance / 1000).toFixed(0)}K
-                        </div>
-                        <div className="stat-label">Balance</div>
+                        <div className="stat-value">{report.reportSummary.closedAccounts}</div>
+                        <div>Closed</div>
                       </div>
+                    </div>
+                  </div>
+
+                  <div className="report-card-balances">
+                    <div className="balance-item">
+                      <span className="balance-label">Current Balance</span>
+                      <span className="balance-value">₹{(report.reportSummary.currentBalance / 1000).toFixed(1)}K</span>
+                    </div>
+                    <div className="balance-item">
+                      <span className="balance-label">Secured</span>
+                      <span className="balance-value secured">₹{(report.reportSummary.securedAccountsAmount / 1000).toFixed(1)}K</span>
+                    </div>
+                    <div className="balance-item">
+                      <span className="balance-label">Unsecured</span>
+                      <span className="balance-value unsecured">₹{(report.reportSummary.unsecuredAccountsAmount / 1000).toFixed(1)}K</span>
                     </div>
                   </div>
 
                   <div className="report-card-footer">
                     <span className="report-date">
-                      📅 {new Date(report.uploadDate).toLocaleDateString('en-IN', {
+                      Uploaded: {new Date(report.uploadDate).toLocaleDateString('en-IN', {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric'

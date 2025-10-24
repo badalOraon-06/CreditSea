@@ -9,7 +9,24 @@ const UploadPage = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   const [reportData, setReportData] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
   const navigate = useNavigate();
+
+  const validateFile = (selectedFile) => {
+    // Validate file type
+    if (!selectedFile.name.endsWith('.xml')) {
+      setError('Please select a valid XML file');
+      return false;
+    }
+    
+    // Validate file size (10MB max)
+    if (selectedFile.size > 10 * 1024 * 1024) {
+      setError('File size must be less than 10MB');
+      return false;
+    }
+    
+    return true;
+  };
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -19,23 +36,48 @@ const UploadPage = () => {
     setSuccess(false);
     setReportData(null);
     
-    if (selectedFile) {
-      // Validate file type
-      if (!selectedFile.name.endsWith('.xml')) {
-        setError('Please select a valid XML file');
-        setFile(null);
-        return;
-      }
-      
-      // Validate file size (10MB max)
-      if (selectedFile.size > 10 * 1024 * 1024) {
-        setError('File size must be less than 10MB');
-        setFile(null);
-        return;
-      }
-      
+    if (selectedFile && validateFile(selectedFile)) {
       setFile(selectedFile);
       console.log('File selected:', selectedFile.name);
+    } else if (selectedFile) {
+      setFile(null);
+    }
+  };
+
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    // Reset states
+    setError('');
+    setSuccess(false);
+    setReportData(null);
+
+    const droppedFile = e.dataTransfer.files[0];
+    
+    if (droppedFile && validateFile(droppedFile)) {
+      setFile(droppedFile);
+      console.log('File dropped:', droppedFile.name);
+    } else if (droppedFile) {
+      setFile(null);
     }
   };
 
@@ -88,12 +130,18 @@ const UploadPage = () => {
     <div className="upload-page">
       <div className="upload-container">
         <div className="upload-header">
-          <h1>📤 Upload Credit Report</h1>
-          <p>Upload an Experian XML file to analyze credit data</p>
+          <h1>Upload Credit Report</h1>
+          <p>Select an Experian XML file</p>
         </div>
 
         <form onSubmit={handleUpload} className="upload-form">
-          <div className="file-input-wrapper">
+          <div 
+            className={`file-input-wrapper ${isDragging ? 'dragging' : ''}`}
+            onDragEnter={handleDragEnter}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+          >
             <input
               id="file-input"
               type="file"
@@ -108,32 +156,18 @@ const UploadPage = () => {
                   <span className="file-icon">📄</span>
                   <span className="file-name">{file.name}</span>
                   <span className="file-size">
-                    ({(file.size / 1024).toFixed(2)} KB)
+                    {(file.size / 1024).toFixed(2)} KB
                   </span>
                 </>
               ) : (
                 <>
                   <span className="file-icon">📁</span>
-                  <span>Choose XML File</span>
-                  <span className="file-hint">or drag and drop</span>
+                  <span>Choose XML File or Drag & Drop</span>
+                  <span className="file-hint">Click to browse or drag files here</span>
                 </>
               )}
             </label>
           </div>
-
-          {file && (
-            <div className="file-info">
-              <div className="info-item">
-                <strong>Selected File:</strong> {file.name}
-              </div>
-              <div className="info-item">
-                <strong>Size:</strong> {(file.size / 1024).toFixed(2)} KB
-              </div>
-              <div className="info-item">
-                <strong>Type:</strong> XML Document
-              </div>
-            </div>
-          )}
 
           <div className="button-group">
             <button
@@ -144,12 +178,11 @@ const UploadPage = () => {
               {uploading ? (
                 <>
                   <span className="spinner"></span>
-                  Uploading...
+                  <span>Processing...</span>
                 </>
               ) : (
                 <>
-                  <span>Upload & Analyze</span>
-                  <span className="btn-icon">🚀</span>
+                  <span>Upload</span>
                 </>
               )}
             </button>
@@ -160,31 +193,31 @@ const UploadPage = () => {
                 onClick={handleReset}
                 className="btn btn-secondary"
               >
-                Reset
+                Clear
               </button>
             )}
           </div>
         </form>
 
-        {/* Success Message */}
+        {/* Success Modal */}
         {success && reportData && (
-          <div className="alert alert-success">
-            <div className="alert-icon">✅</div>
-            <div className="alert-content">
-              <h3>Upload Successful!</h3>
-              <p>Credit report analyzed successfully</p>
-              <div className="report-preview">
-                <div className="preview-item">
-                  <strong>Name:</strong> {reportData.creditReport?.basicDetails?.fullName}
-                </div>
-                <div className="preview-item">
-                  <strong>Credit Score:</strong> {reportData.creditReport?.creditScore?.score}
-                </div>
-                <div className="preview-item">
-                  <strong>Total Accounts:</strong> {reportData.creditReport?.totalAccounts}
+          <div className="success-modal-overlay">
+            <div className="success-modal">
+              <div className="success-animation">
+                <div className="success-checkmark">
+                  <svg className="checkmark" viewBox="0 0 52 52">
+                    <circle className="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path className="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                  </svg>
                 </div>
               </div>
-              <p className="redirect-message">Redirecting to report...</p>
+              <h3>Upload Successful!</h3>
+              <p>Processing your credit report...</p>
+              <div className="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </div>
           </div>
         )}
@@ -192,22 +225,21 @@ const UploadPage = () => {
         {/* Error Message */}
         {error && (
           <div className="alert alert-error">
-            <div className="alert-icon">❌</div>
+            <div className="alert-icon">✕</div>
             <div className="alert-content">
-              <h3>Upload Failed</h3>
+              <h3>Error</h3>
               <p>{error}</p>
             </div>
           </div>
         )}
 
-        {/* Instructions */}
-        <div className="upload-instructions">
-          <h3>📝 Instructions</h3>
+        {/* File Requirements */}
+        <div className="upload-requirements">
+          <h3>File Requirements</h3>
           <ul>
-            <li>Select an Experian credit report XML file</li>
-            <li>File size must be less than 10MB</li>
-            <li>Only .xml files are accepted</li>
-            <li>Data will be analyzed and stored securely</li>
+            <li>Format: XML only</li>
+            <li>Max size: 10MB</li>
+            <li>Source: Experian credit report</li>
           </ul>
         </div>
       </div>

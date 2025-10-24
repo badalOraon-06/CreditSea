@@ -62,13 +62,13 @@ const ReportDetailsPage = () => {
     return 'Needs Improvement';
   };
 
-  const getAccountStatusBadge = (status) => {
+  const getAccountStatusClass = (status) => {
     const statusMap = {
-      'ACTIVE': { class: 'active', label: '✓ Active' },
-      'CLOSED': { class: 'closed', label: '✗ Closed' },
-      'SETTLED': { class: 'settled', label: '✓ Settled' }
+      'ACTIVE': 'active',
+      'CLOSED': 'closed',
+      'SETTLED': 'settled'
     };
-    return statusMap[status] || { class: 'unknown', label: status };
+    return statusMap[status] || 'unknown';
   };
 
   if (loading) {
@@ -86,8 +86,8 @@ const ReportDetailsPage = () => {
     return (
       <div className="report-details-page">
         <div className="error-container">
-          <div className="error-icon">❌</div>
-          <h2>Error Loading Report</h2>
+          <div className="error-icon">!</div>
+          <h2>Error</h2>
           <p>{error || 'Report not found'}</p>
           <button onClick={() => navigate('/reports')} className="btn btn-primary">
             Back to Reports
@@ -103,29 +103,28 @@ const ReportDetailsPage = () => {
         {/* Header */}
         <div className="details-header">
           <button onClick={() => navigate('/reports')} className="back-button">
-            ← Back to Reports
+            ← Back
           </button>
           <button 
             onClick={handleDelete} 
             className="delete-button"
             disabled={deleting}
           >
-            {deleting ? '⏳ Deleting...' : '🗑️ Delete Report'}
+            {deleting ? 'Deleting...' : 'Delete'}
           </button>
         </div>
 
         {/* Basic Details Card */}
         <div className="card basic-details-card">
           <div className="card-header">
-            <h2>👤 Basic Details</h2>
+            <h2>Basic Details</h2>
             <div className={`credit-score-badge ${getCreditScoreColor(report.creditScore.score)}`}>
               <div className="score-value">{report.creditScore.score}</div>
-              <div className="score-label">{getCreditScoreLabel(report.creditScore.score)}</div>
             </div>
           </div>
           <div className="card-body">
             <div className="detail-row">
-              <span className="detail-label">Full Name</span>
+              <span className="detail-label">Name</span>
               <span className="detail-value">{report.basicDetails.fullName}</span>
             </div>
             <div className="detail-row">
@@ -164,50 +163,44 @@ const ReportDetailsPage = () => {
         {/* Report Summary Card */}
         <div className="card summary-card">
           <div className="card-header">
-            <h2>📊 Report Summary</h2>
+            <h2>Summary</h2>
           </div>
           <div className="card-body">
             <div className="summary-grid">
               <div className="summary-stat">
-                <div className="stat-icon">💳</div>
                 <div className="stat-content">
-                  <div className="stat-value">{report.reportSummary.totalAccounts}</div>
                   <div className="stat-label">Total Accounts</div>
+                  <div className="stat-value">{report.reportSummary.totalAccounts}</div>
                 </div>
               </div>
               <div className="summary-stat">
-                <div className="stat-icon">✅</div>
                 <div className="stat-content">
+                  <div className="stat-label">Active</div>
                   <div className="stat-value">{report.reportSummary.activeAccounts}</div>
-                  <div className="stat-label">Active Accounts</div>
                 </div>
               </div>
               <div className="summary-stat">
-                <div className="stat-icon">❌</div>
                 <div className="stat-content">
+                  <div className="stat-label">Closed</div>
                   <div className="stat-value">{report.reportSummary.closedAccounts}</div>
-                  <div className="stat-label">Closed Accounts</div>
                 </div>
               </div>
               <div className="summary-stat">
-                <div className="stat-icon">💰</div>
                 <div className="stat-content">
-                  <div className="stat-value">₹{report.reportSummary.currentBalance.toLocaleString('en-IN')}</div>
                   <div className="stat-label">Current Balance</div>
+                  <div className="stat-value">₹{report.reportSummary.currentBalance.toLocaleString('en-IN')}</div>
                 </div>
               </div>
               <div className="summary-stat">
-                <div className="stat-icon">🔒</div>
                 <div className="stat-content">
+                  <div className="stat-label">Secured</div>
                   <div className="stat-value">₹{report.reportSummary.securedAccountsAmount.toLocaleString('en-IN')}</div>
-                  <div className="stat-label">Secured Amount</div>
                 </div>
               </div>
               <div className="summary-stat">
-                <div className="stat-icon">🔓</div>
                 <div className="stat-content">
+                  <div className="stat-label">Unsecured</div>
                   <div className="stat-value">₹{report.reportSummary.unsecuredAccountsAmount.toLocaleString('en-IN')}</div>
-                  <div className="stat-label">Unsecured Amount</div>
                 </div>
               </div>
             </div>
@@ -217,11 +210,12 @@ const ReportDetailsPage = () => {
         {/* Credit Accounts */}
         <div className="card accounts-card">
           <div className="card-header">
-            <h2>💳 Credit Accounts ({report.creditAccounts.length})</h2>
+            <h2>Credit Accounts</h2>
+            <span className="count-badge">{report.creditAccounts.length}</span>
           </div>
           <div className="card-body">
             {report.creditAccounts.length === 0 ? (
-              <p className="no-data">No credit accounts found</p>
+              <p className="no-data">No credit accounts</p>
             ) : (
               <div className="accounts-list">
                 {report.creditAccounts.map((account, index) => (
@@ -229,8 +223,8 @@ const ReportDetailsPage = () => {
                     <div className="account-header">
                       <div className="account-title">
                         <h3>{account.accountType}</h3>
-                        <span className={`status-badge ${getAccountStatusBadge(account.accountStatus).class}`}>
-                          {getAccountStatusBadge(account.accountStatus).label}
+                        <span className={`status-badge ${getAccountStatusClass(account.accountStatus)}`}>
+                          {account.accountStatus}
                         </span>
                       </div>
                       <div className="account-institution">{account.bank}</div>
@@ -242,7 +236,7 @@ const ReportDetailsPage = () => {
                         <span className="value">{account.accountNumber}</span>
                       </div>
                       <div className="account-detail">
-                        <span className="label">Current Balance</span>
+                        <span className="label">Balance</span>
                         <span className="value">₹{account.currentBalance.toLocaleString('en-IN')}</span>
                       </div>
                       <div className="account-detail">
@@ -251,19 +245,19 @@ const ReportDetailsPage = () => {
                       </div>
                       {account.amountOverdue > 0 && (
                         <div className="account-detail overdue">
-                          <span className="label">⚠️ Amount Overdue</span>
+                          <span className="label">Overdue</span>
                           <span className="value">₹{account.amountOverdue.toLocaleString('en-IN')}</span>
                         </div>
                       )}
                       {account.openDate && (
                         <div className="account-detail">
-                          <span className="label">Opened On</span>
+                          <span className="label">Opened</span>
                           <span className="value">{account.openDate}</span>
                         </div>
                       )}
                       {account.closedDate && (
                         <div className="account-detail">
-                          <span className="label">Closed On</span>
+                          <span className="label">Closed</span>
                           <span className="value">{account.closedDate}</span>
                         </div>
                       )}
@@ -285,13 +279,14 @@ const ReportDetailsPage = () => {
         {report.addresses && report.addresses.length > 0 && (
           <div className="card addresses-card">
             <div className="card-header">
-              <h2>📍 Addresses ({report.addresses.length})</h2>
+              <h2>Addresses</h2>
+              <span className="count-badge">{report.addresses.length}</span>
             </div>
             <div className="card-body">
               <div className="addresses-list">
                 {report.addresses.map((address, index) => (
                   <div key={index} className="address-item">
-                    <div className="address-type">{address.type || 'Address'}</div>
+                    {address.type && <div className="address-type">{address.type}</div>}
                     <div className="address-text">
                       {[
                         address.line1,
@@ -311,7 +306,7 @@ const ReportDetailsPage = () => {
 
         {/* Upload Info */}
         <div className="upload-info">
-          <span>📅 Uploaded on {new Date(report.uploadDate).toLocaleString('en-IN')}</span>
+          <span>Uploaded: {new Date(report.uploadDate).toLocaleDateString('en-IN')}</span>
         </div>
       </div>
     </div>
