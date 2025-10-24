@@ -1,95 +1,29 @@
 # Dependencies
 node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
 
 # Environment variables
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*.local
 
 # Logs
-logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
 # OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-desktop.ini
 
 # Build output
 dist/
 build/
-out/
-.next/
-.nuxt/
-.cache/
-.parcel-cache/
-.vite/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-.idea/
-*.swp
-*.swo
-*~
-.project
-.classpath
-.settings/
-*.sublime-workspace
-*.sublime-project
-
-# Testing
-coverage/
-.nyc_output/
-*.lcov
-
-# Uploads (keep folder structure)
+# Uploads
 uploads/*
 !uploads/.gitkeep
-
-# Temporary files
-*.tmp
-*.temp
-.tmp/
-.temp/
-
-# Internal development documentation
-PHASE3_SUMMARY.md
-PROJECT_COMPLETE.md
-PROJECT_REQUIREMENTS_CHECKLIST.md
-LEARNING_GUIDE.md
-QUICK_STATUS.md
-TESTING_CHECKLIST.md
-API_TESTING_GUIDE.md
-TESTING_GUIDE.md
-TODO.md
-project .md
 
 # Vercel
 .vercel
 
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# Misc
-*.pem
-*.key
-.env.backup
+# Internal docs and temp files
+New folder/
+*.tmp
