@@ -19,6 +19,7 @@
 - [API Documentation](#api-documentation)
 - [Screenshots](#screenshots)
 - [Demo Video](#demo-video)
+- [Deployment](#deployment)
 - [Data Schema](#data-schema)
 - [Troubleshooting](#troubleshooting)
 - [Author](#author)
@@ -64,6 +65,7 @@
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **React 18.3** - UI library
 - **React Router 6** - Client-side routing
 - **Axios** - HTTP client for API calls
@@ -71,6 +73,7 @@
 - **CSS3** - Custom styling with responsive design
 
 ### Backend
+
 - **Node.js** - JavaScript runtime
 - **Express.js 4.21** - Web application framework
 - **Multer** - File upload middleware
@@ -78,10 +81,12 @@
 - **CORS** - Cross-origin resource sharing
 
 ### Database
+
 - **MongoDB** - NoSQL database
 - **Mongoose 8.19** - ODM for MongoDB
 
 ### Development Tools
+
 - **Nodemon** - Auto-restart server on changes
 - **Git** - Version control
 
@@ -191,11 +196,13 @@ npm install
 #### 4️⃣ Start MongoDB
 
 **Windows:**
+
 ```bash
 net start MongoDB
 ```
 
 **Mac/Linux:**
+
 ```bash
 sudo systemctl start mongod
 # OR
@@ -203,6 +210,7 @@ mongod --dbpath /path/to/data/directory
 ```
 
 Verify MongoDB is running:
+
 ```bash
 mongosh
 # or
@@ -214,12 +222,14 @@ mongo
 #### Start Backend Server
 
 Open Terminal 1:
+
 ```bash
 cd backend
 npm run dev
 ```
 
 Expected output:
+
 ```
 🚀 Server is running on port 5000
 ✅ MongoDB Connected: localhost
@@ -231,12 +241,14 @@ Backend API: `http://localhost:5000`
 #### Start Frontend Server
 
 Open Terminal 2:
+
 ```bash
 cd frontend
 npm run dev
 ```
 
 Expected output:
+
 ```
 VITE v5.4.21  ready in XXX ms
 
@@ -251,6 +263,7 @@ Frontend App: `http://localhost:3000`
 ## 📡 API Documentation
 
 ### Base URL
+
 ```
 http://localhost:5000/api
 ```
@@ -258,10 +271,13 @@ http://localhost:5000/api
 ### Endpoints
 
 #### 1. Health Check
+
 ```http
 GET /
 ```
+
 **Response:**
+
 ```json
 {
   "message": "CreditSea API is running!",
@@ -275,6 +291,7 @@ GET /
 ```
 
 #### 2. Upload XML File
+
 ```http
 POST /api/upload
 Content-Type: multipart/form-data
@@ -286,6 +303,7 @@ Content-Type: multipart/form-data
 | xmlFile | File | XML file (max 10MB) |
 
 **Response (201):**
+
 ```json
 {
   "success": true,
@@ -308,6 +326,7 @@ Content-Type: multipart/form-data
 ```
 
 #### 3. Get All Reports
+
 ```http
 GET /api/reports?page=1&limit=10
 ```
@@ -321,6 +340,7 @@ GET /api/reports?page=1&limit=10
 | mobile | String | - | Filter by mobile |
 
 **Response (200):**
+
 ```json
 {
   "success": true,
@@ -333,11 +353,13 @@ GET /api/reports?page=1&limit=10
 ```
 
 #### 4. Get Report by ID
+
 ```http
 GET /api/reports/:id
 ```
 
 **Response (200):**
+
 ```json
 {
   "success": true,
@@ -369,11 +391,13 @@ GET /api/reports/:id
 ```
 
 #### 5. Delete Report (Soft Delete)
+
 ```http
 DELETE /api/reports/:id
 ```
 
 **Response (200):**
+
 ```json
 {
   "success": true,
@@ -387,6 +411,7 @@ DELETE /api/reports/:id
 ### Error Responses
 
 **400 Bad Request:**
+
 ```json
 {
   "success": false,
@@ -395,6 +420,7 @@ DELETE /api/reports/:id
 ```
 
 **404 Not Found:**
+
 ```json
 {
   "success": false,
@@ -403,6 +429,7 @@ DELETE /api/reports/:id
 ```
 
 **500 Internal Server Error:**
+
 ```json
 {
   "success": false,
@@ -416,29 +443,34 @@ DELETE /api/reports/:id
 ## 📸 Screenshots
 
 ### 1. Home Page
+
 > Professional landing page with feature overview
 
-*[Screenshot placeholder - Add image after taking screenshot]*
+_[Screenshot placeholder - Add image after taking screenshot]_
 
 ### 2. Upload Page
+
 > Drag-and-drop XML file upload with validation
 
-*[Screenshot placeholder - Add image after taking screenshot]*
+_[Screenshot placeholder - Add image after taking screenshot]_
 
 ### 3. Report List
+
 > View all uploaded credit reports with pagination
 
-*[Screenshot placeholder - Add image after taking screenshot]*
+_[Screenshot placeholder - Add image after taking screenshot]_
 
 ### 4. Report Details - Basic Info
+
 > Comprehensive view of personal details and credit score
 
-*[Screenshot placeholder - Add image after taking screenshot]*
+_[Screenshot placeholder - Add image after taking screenshot]_
 
 ### 5. Report Details - Credit Accounts
+
 > Detailed breakdown of all credit accounts
 
-*[Screenshot placeholder - Add image after taking screenshot]*
+_[Screenshot placeholder - Add image after taking screenshot]_
 
 ---
 
@@ -446,9 +478,10 @@ DELETE /api/reports/:id
 
 > 3-5 minute walkthrough demonstrating all features
 
-**Video Link:** *[YouTube/Drive link placeholder - Add after recording]*
+**Video Link:** _[YouTube/Drive link placeholder - Add after recording]_
 
 **What's Covered:**
+
 1. Application overview and architecture (30 sec)
 2. Uploading and parsing XML file (1 min)
 3. Viewing report list and details (1.5 min)
@@ -457,7 +490,44 @@ DELETE /api/reports/:id
 
 ---
 
-## 💾 Data Schema
+## � Deployment
+
+### Deploy to Vercel
+
+This project is ready to deploy on Vercel with minimal configuration.
+
+**📖 Full Deployment Guide:** See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) for complete step-by-step instructions.
+
+#### Quick Start:
+
+**1. Deploy Backend:**
+
+- Create Vercel project from GitHub repo
+- Set root directory: `backend`
+- Add environment variables: `MONGODB_URI`, `PORT`, `NODE_ENV`
+- Deploy!
+
+**2. Deploy Frontend:**
+
+- Create another Vercel project from same repo
+- Set root directory: `frontend`
+- Framework: Vite
+- Add environment variable: `VITE_API_URL`
+- Deploy!
+
+**3. Setup MongoDB Atlas:**
+
+- Create free cluster at [MongoDB Atlas](https://mongodb.com/cloud/atlas)
+- Get connection string
+- Add to backend environment variables
+
+**Live Demo:** _[Add your deployed URL after deployment]_
+
+For detailed instructions, database setup, troubleshooting, and best practices, refer to [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md).
+
+---
+
+## �💾 Data Schema
 
 ### MongoDB Schema Design
 
@@ -470,7 +540,7 @@ DELETE /api/reports/:id
   originalFileName: String,
   fileSize: Number,
   uploadDate: Date,
-  
+
   // Basic Details
   basicDetails: {
     firstName: String,
@@ -481,14 +551,14 @@ DELETE /api/reports/:id
     dateOfBirth: String,
     gender: String
   },
-  
+
   // Credit Score
   creditScore: {
     score: Number (300-900, required),
     confidenceLevel: String,
     range: String
   },
-  
+
   // Report Summary
   reportSummary: {
     totalAccounts: Number,
@@ -499,7 +569,7 @@ DELETE /api/reports/:id
     unsecuredAccountsAmount: Number,
     last7DaysCreditEnquiries: Number
   },
-  
+
   // Credit Accounts Array
   creditAccounts: [{
     accountNumber: String (required),
@@ -514,7 +584,7 @@ DELETE /api/reports/:id
     accountStatus: String,
     paymentRating: String
   }],
-  
+
   // Addresses Array
   addresses: [{
     line1: String,
@@ -524,7 +594,7 @@ DELETE /api/reports/:id
     state: String,
     postalCode: String
   }],
-  
+
   // Metadata
   isActive: Boolean (default: true),
   createdAt: Date,
@@ -541,6 +611,7 @@ DELETE /api/reports/:id
 **Problem:** `MongoServerError: connect ECONNREFUSED`
 
 **Solution:**
+
 ```bash
 # Check if MongoDB is running
 mongosh
@@ -556,6 +627,7 @@ brew services start mongodb-community  # Mac
 **Problem:** `Error: listen EADDRINUSE: address already in use :::5000`
 
 **Solution:**
+
 ```bash
 # Windows - Find and kill process
 netstat -ano | findstr :5000
@@ -570,6 +642,7 @@ lsof -ti:5000 | xargs kill -9
 **Problem:** File upload returns 400 error
 
 **Solutions:**
+
 - Ensure file is `.xml` format
 - Check file size is under 10MB
 - Verify backend server is running
@@ -589,7 +662,7 @@ This project is created for educational purposes as part of the CreditSea Fullst
 
 - GitHub: [@badalOraon-06](https://github.com/badalOraon-06)
 - Repository: [CreditSea](https://github.com/badalOraon-06/CreditSea)
-- LinkedIn: *[Add your LinkedIn profile]*
+- LinkedIn: _[Add your LinkedIn profile]_
 
 ---
 
