@@ -8,13 +8,21 @@ import fs from 'fs/promises';
 
 /**
  * Parse XML file and extract credit report data
- * @param {string} filePath - Path to the XML file
+ * @param {string|Buffer} input - Path to the XML file or Buffer containing XML data
  * @returns {Promise<Object>} Parsed credit report data
  */
-export const parseXMLFile = async (filePath) => {
+export const parseXMLFile = async (input) => {
   try {
-    // Read XML file
-    const xmlData = await fs.readFile(filePath, 'utf8');
+    let xmlData;
+    
+    // Check if input is a Buffer (from multer memory storage) or a file path
+    if (Buffer.isBuffer(input)) {
+      console.log('📦 Processing XML from memory buffer');
+      xmlData = input.toString('utf8');
+    } else {
+      console.log('📂 Reading XML from file path:', input);
+      xmlData = await fs.readFile(input, 'utf8');
+    }
     
     // Parse XML to JavaScript object
     const parser = new xml2js.Parser({ 

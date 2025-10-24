@@ -21,23 +21,26 @@ export const uploadXML = async (req, res) => {
     const file = req.file;
 
     console.log('📁 File uploaded successfully:');
-    console.log('   - Filename:', file.filename);
     console.log('   - Original name:', file.originalname);
     console.log('   - Size:', (file.size / 1024).toFixed(2), 'KB');
-    console.log('   - Path:', file.path);
+    console.log('   - Memory buffer:', file.buffer ? 'Yes' : 'No');
 
-    // Parse the XML file
-    console.log('🔍 Parsing XML file...');
-    const parsedData = await parseXMLFile(file.path);
+    // Parse the XML file from memory buffer
+    console.log('🔍 Parsing XML file from buffer...');
+    const parsedData = await parseXMLFile(file.buffer);
     console.log('✅ XML parsed successfully');
     console.log('   - Name:', parsedData.basicDetails.fullName);
     console.log('   - Credit Score:', parsedData.creditScore.score);
     console.log('   - Total Accounts:', parsedData.reportSummary.totalAccounts);
 
+    // Generate unique filename for reference
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const filename = `${file.originalname.replace('.xml', '')}-${uniqueSuffix}.xml`;
+
     // Save to MongoDB
     console.log('💾 Saving to database...');
     const creditReport = new CreditReport({
-      fileName: file.filename,
+      fileName: filename,
       originalFileName: file.originalname,
       fileSize: file.size,
       reportDate: parsedData.reportDate,
@@ -62,7 +65,7 @@ export const uploadXML = async (req, res) => {
       data: {
         reportId: creditReport._id,
         file: {
-          filename: file.filename,
+          filename: filename,
           originalname: file.originalname,
           size: file.size,
           uploadedAt: creditReport.uploadDate
