@@ -7,11 +7,14 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-v5+-green.svg)](https://www.mongodb.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-blue?logo=vercel)](https://credit-sea-eight-ruddy.vercel.app/)
+
 ---
 
 ## 📋 Table of Contents
 
 - [About the Project](#about-the-project)
+- [Live Demo](#live-demo)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
@@ -39,6 +42,12 @@
 ✅ **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
 
 ---
+
+## 🔗 Live Demo
+
+- App URL: https://credit-sea-eight-ruddy.vercel.app/
+
+Explore the deployed frontend on Vercel. Ensure the backend API is configured per the Deployment guide and the frontend `VITE_API_URL` points to your backend.
 
 ## ✨ Features
 
@@ -474,23 +483,8 @@ _[Screenshot placeholder - Add image after taking screenshot]_
 
 ---
 
-## 🎥 Demo Video
 
-> 3-5 minute walkthrough demonstrating all features
-
-**Video Link:** _[YouTube/Drive link placeholder - Add after recording]_
-
-**What's Covered:**
-
-1. Application overview and architecture (30 sec)
-2. Uploading and parsing XML file (1 min)
-3. Viewing report list and details (1.5 min)
-4. Code structure walkthrough (1.5 min)
-5. Closing remarks (30 sec)
-
----
-
-## � Deployment
+## 🚀 Deployment
 
 ### Deploy to Vercel
 
@@ -521,13 +515,13 @@ This project is ready to deploy on Vercel with minimal configuration.
 - Get connection string
 - Add to backend environment variables
 
-**Live Demo:** _[Add your deployed URL after deployment]_
+**Live Demo:** https://credit-sea-eight-ruddy.vercel.app/
 
 For detailed instructions, database setup, troubleshooting, and best practices, refer to [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md).
 
 ---
 
-## �💾 Data Schema
+## 💾 Data Schema
 
 ### MongoDB Schema Design
 
@@ -662,7 +656,7 @@ This project is created for educational purposes as part of the CreditSea Fullst
 
 - GitHub: [@badalOraon-06](https://github.com/badalOraon-06)
 - Repository: [CreditSea](https://github.com/badalOraon-06/CreditSea)
-- LinkedIn: _[Add your LinkedIn profile]_
+- LinkedIn: [_\[Add your LinkedIn profile\]_](https://www.linkedin.com/in/badal-oraon-776b40293/)
 
 ---
 
@@ -674,13 +668,6 @@ This project is created for educational purposes as part of the CreditSea Fullst
 
 ---
 
-## 📝 Project Status
-
-**Status:** ✅ Complete and Ready for Submission
-
-**Completion:** 95% (Pending: Final screenshots and demo video)
-
-**Last Updated:** October 23, 2025
 
 ---
 
